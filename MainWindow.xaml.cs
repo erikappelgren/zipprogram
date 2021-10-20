@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Win32;
+using System.IO;
 
 namespace zipprogram
 {
@@ -23,6 +25,16 @@ namespace zipprogram
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void OpenFileButton(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            
+            if (openFileDialog.ShowDialog() == true)
+            {
+                PreviewBox.Text = File.ReadAllText(openFileDialog.FileName);
+            }
         }
     }
 }

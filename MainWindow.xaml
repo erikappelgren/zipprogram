@@ -5,8 +5,91 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:zipprogram"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Molk Utilities" Height="450" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="auto"/> 
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
 
+        <Grid 
+            Grid.Row="1"
+            Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button
+                Padding="5"   
+                Grid.Row="1"
+                Grid.Column="1"
+                Name="OpenFiles"
+                HorizontalAlignment="Right"
+                Content="Open File"
+                Click="OpenFileButton"
+            />
+            <TextBox
+                Name="FilePath" 
+                Grid.ColumnSpan="2" 
+                Margin="0,0,60,0"
+                HorizontalAlignment="Stretch">
+            </TextBox>
+            
+        </Grid>
+
+        <ScrollViewer
+            Grid.Row="2"
+            Grid.Column="1"
+            Margin="0,10,0,20"
+            VerticalScrollBarVisibility="Visible"
+            ScrollViewer.CanContentScroll="True">
+
+            <Grid
+                Grid.Row="2"
+                Grid.Column="1">
+                <TextBox
+                    Name="PreviewBox"
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    BorderThickness="1"
+                    Padding="10"
+                    TextWrapping="Wrap">
+                </TextBox>
+            </Grid>
+        </ScrollViewer>
+
+        <Grid
+            Grid.Row="2"
+            Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5*" />
+                <RowDefinition Height="5*" />
+            </Grid.RowDefinitions>
+
+            <Button 
+                Name="Molk"
+                VerticalAlignment="Center"
+                Grid.Row="0"
+                Content="Molk"
+                Padding="50"
+                Margin="20"></Button>
+            
+            <Button 
+                Name="UnMolk"
+                VerticalAlignment="Center"
+                Grid.Row="1"
+                Content="UnMolk"
+                Padding="50"
+                Margin="20"></Button>
+            
+        </Grid>
     </Grid>
 </Window>
