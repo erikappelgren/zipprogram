@@ -13,20 +13,18 @@
         <Viewbox>
         <StackPanel Margin="10, 100" HorizontalAlignment="Center" Width="500">
             <Label FontSize="20"  Foreground="White" Content="Location:" Target="{Binding ElementName=txtName}" />
-            <TextBox Name="txtName" />
-            
-            <Label FontSize="20" Foreground="White" Content="Name:" Target="{Binding ElementName=txtMail}" />
+                <TextBox Name="txtName" />
+                <Label FontSize="20" Foreground="White" Content="Name:" Target="{Binding ElementName=txtMail}" />
             <TextBox Name="txtMail" />
                 
-        
-        <Button HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="50" HorizontalContentAlignment="Center" BorderBrush="Black" Margin="10">
+        <Button HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="50" HorizontalContentAlignment="Center" Margin="10">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background" Value="White"/>
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type Button}">
-                                <Border Background="{TemplateBinding Background}">
+                                <Border Background="{TemplateBinding Background}" BorderThickness="1" BorderBrush="Black">
                                     <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                 </Border>
                             </ControlTemplate>
@@ -36,15 +34,15 @@
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="#5F2383"/>
                             <Setter Property="Foreground" Value="White"/>
-                                </Trigger>
+                            </Trigger>
                     </Style.Triggers>
                 </Style>
             </Button.Style>
                     <StackPanel Margin="5"
                     Orientation="Horizontal">
                         <TextBlock Text="OK" FontSize="30"
-                       Margin="0 0 0 0"/>
-                        <Image Source="C:\projectimages\checkmark1.png" 
+                       Margin="0,0,10,0"/>
+                        <Image Source="images/checkmark1.png" 
                    Height="27"/>
                     </StackPanel>
                 </Button>
