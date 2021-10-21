@@ -7,6 +7,14 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
+        <DockPanel Margin="10">
+            <WrapPanel HorizontalAlignment="Center" DockPanel.Dock="Top" Margin="0,0,0,10">
+                <Button Name="btnOpenFile" Click="btnOpenFile_Click">Open file</Button>
+            </WrapPanel>
+            <ListBox Name="lbFiles" />
+        </DockPanel>
+        <WrapPanel HorizontalAlignment="Right">
+            <Button Name="btnZip" Click="btnZip_Click">Zip</Button>
+        </WrapPanel>
     </Grid>
 </Window>
