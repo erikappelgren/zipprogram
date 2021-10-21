@@ -22,6 +22,7 @@ namespace zipprogram
     /// </summary>
     public partial class MainWindow : Window
     {
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -30,10 +31,11 @@ namespace zipprogram
         private void OpenFileButton(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            
+            openFileDialog.Filter = "All files (*.*)|*.*";
             if (openFileDialog.ShowDialog() == true)
             {
-                PreviewBox.Text = File.ReadAllText(openFileDialog.FileName);
+                PreviewBox.Text = System.IO.Path.GetFileName(openFileDialog.FileName);
+                FilePath.Text = openFileDialog.FileName;
             }
         }
     }
