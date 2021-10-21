@@ -23,6 +23,7 @@
             <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
         
+        <!--Grid row 0-->
         <StackPanel 
             Grid.Row="0" 
             Grid.Column="2">
@@ -34,6 +35,7 @@
             </Grid>
         </StackPanel>
         
+        <!--Grid row 1-->
         <Grid 
             Grid.Row="1"
             Grid.Column="1">
@@ -59,7 +61,24 @@
                 HorizontalAlignment="Stretch">
             </TextBox>
         </Grid>
+        
+        <!--Grid row 2-->
 
+        <StackPanel
+            Name="Help"
+            Grid.Row="2"
+            Grid.Column="0">
+            <Grid>
+                <Button
+                    Name="HelpButton"
+                    Content="Help Me!"
+                    VerticalAlignment="Bottom" Margin="-2,0,2,-349">
+                    
+                </Button>
+            </Grid>
+            
+        </StackPanel>
+        
         <StackPanel
             Name="PreviewTextBox"
             Margin="0,0,0,40"
