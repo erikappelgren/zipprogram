@@ -23,6 +23,13 @@ namespace zipprogram
         public MainWindow()
         {
             InitializeComponent();
+            
+        }
+        private void ButtonClicked(object sender, RoutedEventArgs e)
+        {
+            ZipWindow p = new ZipWindow();
+            //myFrameInCurrentWindow.Navigate(p);
+            this.Content = p;
         }
     }
 }
