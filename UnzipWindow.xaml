@@ -13,9 +13,9 @@
         <Viewbox>
             <StackPanel Margin="10, 100" HorizontalAlignment="Center" Width="500">
                 <Label FontSize="20"  Foreground="White" Content="Folder to unzip:" Target="{Binding ElementName=txtName}" />
-                <TextBox Name="txtName" />
+                <TextBox Name="unzipFolderName" />
                 <Label FontSize="20" Foreground="White" Content="New folder name:" Target="{Binding ElementName=txtMail}" />
-                <TextBox Name="txtMail" />
+                <TextBox Name="newFolderName" />
 
                 <Button HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="50" HorizontalContentAlignment="Center" Margin="10">
                     <Button.Style>

@@ -12,10 +12,10 @@
     <Grid>
         <Viewbox>
         <StackPanel Margin="10, 100" HorizontalAlignment="Center" Width="500">
-            <Label FontSize="20"  Foreground="White" Content="Location:" Target="{Binding ElementName=txtName}" />
-                <TextBox Name="txtName" />
-                <Label FontSize="20" Foreground="White" Content="Name:" Target="{Binding ElementName=txtMail}" />
-            <TextBox Name="txtMail" />
+            <Label FontSize="20"  Foreground="White" Content="Folder Location:" Target="{Binding ElementName=txtName}" />
+                <TextBox Name="folderLocation" />
+                <Label FontSize="20" Foreground="White" Content="Zip Folder Name:" Target="{Binding ElementName=txtMail}" />
+            <TextBox Name="newZipFolderName" />
                 
         <Button HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="50" HorizontalContentAlignment="Center" Margin="10">
             <Button.Style>
