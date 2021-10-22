@@ -7,9 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="ZipMolk">
-      <HintPath>..\ZipMolk\ZipMolk\bin\Debug\netcoreapp3.1\ZipMolk.dll</HintPath>
-    </Reference>
+    <None Remove="images\checkmark1.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="images\checkmark1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>

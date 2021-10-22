@@ -136,7 +136,7 @@
                     Content="Molk"
                     Padding="10"
                     Margin="20"
-                    Click="btnZip_Click">
+                    Click="ButtonClicked">
                 </Button>
 
                 <Button 

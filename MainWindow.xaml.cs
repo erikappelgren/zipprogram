@@ -28,15 +28,12 @@ namespace zipprogram
         public MainWindow()
         {
             InitializeComponent();
-
-            /*
-            List<File> files = new List<File>();
-            for (int i = 0; i < lbFiles.Items.Count; i++)
-            {
-                files.Add(new File(Name) { Name = lbFiles[i]});
-            }
-            lbFiles.ItemsSource = files;
-            */
+        }
+        private void ButtonClicked(object sender, RoutedEventArgs e)
+        {
+            ZipWindow p = new ZipWindow(lbFiles);
+            //myFrameInCurrentWindow.Navigate(p);
+            this.Content = p;
         }
 
         /*
@@ -93,29 +90,6 @@ namespace zipprogram
                 }
             }
         }
-
-        private void btnZip_Click(object sender, RoutedEventArgs e)
-        {
-            StringBuilder sb = new StringBuilder();
-            foreach (object item in lbFiles.SelectedItems)
-            {
-                sb.Append(item.ToString());
-                sb.Append(" ");
-            }
-            MessageBox.Show(sb.ToString());
-
-            string command = "-v " + "Test10.molk " + sb.ToString();
-            MessageBox.Show(command);
-
-            
-            var startInfo = new ProcessStartInfo();
-            startInfo.WorkingDirectory = @"C:\Users\Olivi\source\repos";
-            startInfo.FileName = @"C:\Users\Olivi\source\repos\zipprogram\molk.exe";
-            //startInfo.Arguments = @"-v Test8.molk *.txt";
-            startInfo.Arguments = command;
-            Process proc = Process.Start(startInfo);
-            
-        }
     }
 
     public class File
@@ -127,6 +101,7 @@ namespace zipprogram
         {
             this.Name = Name;
             this.IsChecked = IsChecked;
+            
         }
     }
 }
