@@ -30,6 +30,7 @@ namespace zipprogram
             InitializeComponent();
         }
 
+        /*
         private void OpenFileButton(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -39,22 +40,69 @@ namespace zipprogram
                 PreviewBox.Text = File.ReadAllText(openFileDialog.FileName);
             }
         }
+        */
+
         private void btnOpenFile_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Multiselect = true;
-            openFileDialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+            openFileDialog.Filter = "All files (*.*)|*.*";
             openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             if (openFileDialog.ShowDialog() == true)
             {
                 foreach (string filename in openFileDialog.FileNames)
                     lbFiles.Items.Add(System.IO.Path.GetFileName(filename));
+                FilePath.Text = openFileDialog.FileName;
+            }
+        }
+
+        private void cbAllFeatures_CheckedChanged(object sender, RoutedEventArgs e)
+        {
+            bool newVal = (cbAllFeatures.IsChecked == true);
+
+            for (int i = 0; i < lbFiles.Items.Count; i++)
+            {
+                CheckBox item = lbFiles.Items[i] as CheckBox;
+                item.IsChecked = newVal;
+            }
+        }
+
+        private void cbFeature_CheckedChanged(object sender, RoutedEventArgs e)
+        {
+            cbAllFeatures.IsChecked = null;
+
+            foreach (CheckBox item in lbFiles.Items)
+            {
+                if ((item.IsChecked == true))
+                {
+                    cbAllFeatures.IsChecked = true;
+                }
+                else if ((item.IsChecked == false))
+                {
+                    cbAllFeatures.IsChecked = false;
+                }
             }
         }
 
         private void btnZip_Click(object sender, RoutedEventArgs e)
         {
+            var startInfo = new ProcessStartInfo();
+            startInfo.WorkingDirectory = @"C:\Users\Olivi\source\repos";
+            startInfo.FileName = @"C:\Users\Olivi\source\repos\zipprogram\molk.exe";
+            startInfo.Arguments = @"-v Test8.molk *.txt";
+            Process proc = Process.Start(startInfo);
+        }
+    }
 
+    public class file
+    {
+        public string Name { get; set; }
+        public bool IsChecked { get; set; }
+        
+        public file(string Name, bool IsChecked)
+        {
+            this.Name = Name;
+            this.IsChecked = IsChecked;
         }
     }
 }

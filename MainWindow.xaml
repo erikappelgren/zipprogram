@@ -5,19 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:zipprogram"
         mc:Ignorable="d"
-        Title="Molk Utilities" Height="450" Width="800">
+        Title="Molk Utilities" Height="450" Width="800" Background="#5F2383">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="auto"/> 
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
-        
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="50"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
+
+        <StackPanel 
+            Grid.Row="0" 
+            Grid.Column="2">
+            <Grid 
+                Name="ImageGrid">
+                <Image Source="img/logo.png" 
+                       Width="{Binding ActualWidth, ElementName=ImageGrid}">
+                </Image>
+            </Grid>
+        </StackPanel>
 
         <Grid 
             Grid.Row="1"
@@ -34,62 +45,106 @@
                 Name="OpenFiles"
                 HorizontalAlignment="Right"
                 Content="Open File"
-                Click="OpenFileButton"
-            />
+                Click="btnOpenFile_Click">
+            </Button>
+
             <TextBox
                 Name="FilePath" 
                 Grid.ColumnSpan="2" 
                 Margin="0,0,60,0"
                 HorizontalAlignment="Stretch">
             </TextBox>
-            
         </Grid>
 
-        <ScrollViewer
+        <StackPanel
+            Name="PreviewTextBox"
+            Margin="0,0,0,40"
             Grid.Row="2"
-            Grid.Column="1"
-            Margin="0,10,0,20"
-            VerticalScrollBarVisibility="Visible"
-            ScrollViewer.CanContentScroll="True">
-
-            <Grid
-                Grid.Row="2"
-                Grid.Column="1">
-                <TextBox
-                    Name="PreviewBox"
-                    Grid.Row="3"
-                    Grid.Column="1"
-                    BorderThickness="1"
-                    Padding="10"
-                    TextWrapping="Wrap">
-                </TextBox>
+            Grid.Column="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
             </Grid>
-        </ScrollViewer>
+            <Grid
+                Grid.Row="1">
+                <CheckBox Name="cbAllFeatures" Checked="cbAllFeatures_CheckedChanged" Unchecked="cbAllFeatures_CheckedChanged"
+                    Margin="0,10,0,0">
+                    <TextBlock>
+				        <Run Foreground="White" FontWeight="Bold">Select All</Run>
+                    </TextBlock>
+                </CheckBox>
+            </Grid>
 
-        <Grid
+            <StackPanel
+                Grid.Row="2">
+                <Grid>
+                    <ScrollViewer
+                        Margin="0,5,0,20"
+                        VerticalScrollBarVisibility="Visible"
+                        ScrollViewer.CanContentScroll="True">
+
+                        <Grid
+                            Grid.Row="2"
+                            Grid.Column="1">
+
+                            <ListView
+                                x:Name="lbFiles"
+                                SelectionMode="Multiple"
+                                Height="{Binding ActualWidth, ElementName=PreviewTextBox}"
+                                BorderThickness="1"
+                                Padding="10">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <CheckBox Content="{Binding .}" IsChecked="true" Checked="cbFeature_CheckedChanged" Unchecked="cbFeature_CheckedChanged" />
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListView>
+                            
+                            <!--<TextBox
+                                Name="PreviewBox"
+                                Height="{Binding ActualWidth, ElementName=PreviewTextBox}"
+                                BorderThickness="1"
+                                Padding="10"
+                                TextWrapping="Wrap">
+                            </TextBox>-->
+                            
+                        </Grid>
+                    </ScrollViewer>
+                </Grid>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel
+            Name="RightButtonPanel"
             Grid.Row="2"
             Grid.Column="2">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="5*" />
-                <RowDefinition Height="5*" />
-            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="150"/>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
 
-            <Button 
-                Name="Molk"
-                VerticalAlignment="Center"
-                Grid.Row="0"
-                Content="Molk"
-                Padding="50"
-                Margin="20"></Button>
-            
-            <Button 
-                Name="UnMolk"
-                VerticalAlignment="Center"
-                Grid.Row="1"
-                Content="UnMolk"
-                Padding="50"
-                Margin="20"></Button>
-            
-        </Grid>
+                <Button 
+                    Name="Molk"
+                    Grid.Row="1"
+                    Content="Molk"
+                    Padding="10"
+                    Margin="20"
+                    Click="btnZip_Click">
+                </Button>
+
+                <Button 
+                    Name="UnMolk"
+                    Grid.Row="2"
+                    Content="UnMolk"
+                    Padding="10"
+                    Margin="20">
+                </Button>
+
+            </Grid>
+        </StackPanel>
     </Grid>
 </Window>
