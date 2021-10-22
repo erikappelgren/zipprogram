@@ -104,7 +104,7 @@ namespace zipprogram
             }
             MessageBox.Show(sb.ToString());
 
-            string command = "-v " + "Test9.molk " + sb.ToString();
+            string command = "-v " + "Test10.molk " + sb.ToString();
             MessageBox.Show(command);
 
             
