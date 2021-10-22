@@ -12,12 +12,17 @@
     <Grid>
         <Viewbox>
             <StackPanel Margin="10, 100" HorizontalAlignment="Center" Width="500">
-                <Label FontSize="20"  Foreground="White" Content="Folder to unzip:" Target="{Binding ElementName=txtName}" />
-                <TextBox Name="unzipFolderName" />
-                <Label FontSize="20" Foreground="White" Content="New folder name:" Target="{Binding ElementName=txtMail}" />
-                <TextBox Name="newFolderName" />
+                <Label FontSize="20"  Foreground="White" Content="Folder To Unzip:" Target="{Binding ElementName=txtName}" />
+                <StackPanel Orientation="Horizontal">
+                    <TextBox x:Name="folderLocationText" Width="500" Padding="0,0,30,0" Height="20" FontSize="14" Text="C:/Users/"/>
+                    <Button x:Name="openFolderButton" Click="openFolderButton_Click">
+                        <Image Height="18" Source="images/folder_icon.png" Margin="-30, 0,0,0"/>
+                    </Button>
+                </StackPanel>
+                <Label FontSize="20" Foreground="White" Content="Zip Folder Name:" Target="{Binding ElementName=txtMail}" />
+                <TextBox Name="newZipFolderName" Text="NyMapp.molk" Height="20" FontSize="14" Padding="0,0,30,0"/>
 
-                <Button HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="50" HorizontalContentAlignment="Center" Margin="10">
+                <Button x:Name="OkButton" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="50" HorizontalContentAlignment="Center" Margin="10">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Background" Value="White"/>
@@ -46,7 +51,9 @@
                    Height="27"/>
                     </StackPanel>
                 </Button>
+
             </StackPanel>
         </Viewbox>
+
     </Grid>
 </Page>

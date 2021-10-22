@@ -22,5 +22,13 @@ namespace zipprogram
         {
             InitializeComponent();
         }
+        private void openFolderButton_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new Ookii.Dialogs.Wpf.VistaFolderBrowserDialog();
+            if (dialog.ShowDialog().GetValueOrDefault())
+            {
+                folderLocationText.Text = dialog.SelectedPath;
+            }
+        }
     }
 }
