@@ -29,6 +29,7 @@ namespace zipprogram
         {
             InitializeComponent();
         }
+
         private void ButtonClicked(object sender, RoutedEventArgs e)
         {
             ZipWindow p = new ZipWindow(lbFiles);
@@ -36,18 +37,30 @@ namespace zipprogram
             this.Content = p;
         }
 
+        private void xButtonClick(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
         /*
         private void OpenFileButton(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            
+            openFileDialog.Filter = "All files (*.*)|*.*";
             if (openFileDialog.ShowDialog() == true)
             {
-                PreviewBox.Text = File.ReadAllText(openFileDialog.FileName);
+                PreviewBox.Text = System.IO.Path.GetFileName(openFileDialog.FileName);
+                FilePath.Text = openFileDialog.FileName;
             }
         }
         */
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        //select the files to be zipped
         private void btnOpenFile_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -103,27 +116,5 @@ namespace zipprogram
             this.IsChecked = IsChecked;
             
         }
-
-        private void xButtonClick(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
-
-        private void OpenFileButton(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "All files (*.*)|*.*";
-            if (openFileDialog.ShowDialog() == true)
-            {
-                PreviewBox.Text = System.IO.Path.GetFileName(openFileDialog.FileName);
-                FilePath.Text = openFileDialog.FileName;
-            }
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
     }
 }

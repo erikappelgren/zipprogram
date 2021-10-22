@@ -28,6 +28,7 @@ namespace zipprogram
             InitializeComponent();
         }
 
+        //zip selected files
         private void btnZip_Click(object sender, RoutedEventArgs e)
         {
             StringBuilder sb = new StringBuilder();
