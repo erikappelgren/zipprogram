@@ -7,6 +7,30 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="img\logo.png" />
+    <None Remove="img\UnZip.Icon.png" />
+    <None Remove="img\x-icon.png" />
+    <None Remove="img\Zip.Icon.png" />
+    <None Remove="x-icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="img\logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\UnZip.Icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\x-icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\Zip.Icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="x-icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="images\checkmark1.png" />
   </ItemGroup>
 

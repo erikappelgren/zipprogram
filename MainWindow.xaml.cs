@@ -103,5 +103,27 @@ namespace zipprogram
             this.IsChecked = IsChecked;
             
         }
+
+        private void xButtonClick(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void OpenFileButton(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "All files (*.*)|*.*";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                PreviewBox.Text = System.IO.Path.GetFileName(openFileDialog.FileName);
+                FilePath.Text = openFileDialog.FileName;
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
     }
 }
