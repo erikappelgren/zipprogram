@@ -28,6 +28,15 @@ namespace zipprogram
         public MainWindow()
         {
             InitializeComponent();
+
+            /*
+            List<File> files = new List<File>();
+            for (int i = 0; i < lbFiles.Items.Count; i++)
+            {
+                files.Add(new File(Name) { Name = lbFiles[i]});
+            }
+            lbFiles.ItemsSource = files;
+            */
         }
 
         /*
@@ -56,6 +65,7 @@ namespace zipprogram
             }
         }
 
+        
         private void cbAllFeatures_CheckedChanged(object sender, RoutedEventArgs e)
         {
             bool newVal = (cbAllFeatures.IsChecked == true);
@@ -86,20 +96,34 @@ namespace zipprogram
 
         private void btnZip_Click(object sender, RoutedEventArgs e)
         {
+            StringBuilder sb = new StringBuilder();
+            foreach (object item in lbFiles.SelectedItems)
+            {
+                sb.Append(item.ToString());
+                sb.Append(" ");
+            }
+            MessageBox.Show(sb.ToString());
+
+            string command = "-v " + "Test9.molk " + sb.ToString();
+            MessageBox.Show(command);
+
+            
             var startInfo = new ProcessStartInfo();
             startInfo.WorkingDirectory = @"C:\Users\Olivi\source\repos";
             startInfo.FileName = @"C:\Users\Olivi\source\repos\zipprogram\molk.exe";
-            startInfo.Arguments = @"-v Test8.molk *.txt";
+            //startInfo.Arguments = @"-v Test8.molk *.txt";
+            startInfo.Arguments = command;
             Process proc = Process.Start(startInfo);
+            
         }
     }
 
-    public class file
+    public class File
     {
         public string Name { get; set; }
         public bool IsChecked { get; set; }
         
-        public file(string Name, bool IsChecked)
+        public File(string Name, bool IsChecked)
         {
             this.Name = Name;
             this.IsChecked = IsChecked;

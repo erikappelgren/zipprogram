@@ -89,7 +89,7 @@
                             Grid.Row="2"
                             Grid.Column="1">
 
-                            <ListView
+                            <ListBox
                                 x:Name="lbFiles"
                                 SelectionMode="Multiple"
                                 Height="{Binding ActualWidth, ElementName=PreviewTextBox}"
@@ -97,10 +97,13 @@
                                 Padding="10">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
-                                        <CheckBox Content="{Binding .}" IsChecked="true" Checked="cbFeature_CheckedChanged" Unchecked="cbFeature_CheckedChanged" />
+                                        <CheckBox Content="{Binding .}" Tag="{Binding CoasterId}" 
+                                                    IsChecked="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}}, 
+                                                        Path=IsSelected}" />
+                                        <!--<CheckBox Content="{Binding .}" IsChecked="false" Checked="cbFeature_CheckedChanged" Unchecked="cbFeature_CheckedChanged" />-->
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
-                            </ListView>
+                            </ListBox>
                             
                             <!--<TextBox
                                 Name="PreviewBox"
