@@ -75,7 +75,7 @@ namespace zipprogram
             }
         }
 
-        
+
         private void cbAllFeatures_CheckedChanged(object sender, RoutedEventArgs e)
         {
             bool newVal = (cbAllFeatures.IsChecked == true);
@@ -109,12 +109,12 @@ namespace zipprogram
     {
         public string Name { get; set; }
         public bool IsChecked { get; set; }
-        
+
         public File(string Name, bool IsChecked)
         {
             this.Name = Name;
             this.IsChecked = IsChecked;
-            
+
         }
     }
 }

@@ -6,54 +6,219 @@
       xmlns:local="clr-namespace:zipprogram"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Background="#5F2383"
+      Background="Transparent"
       Title="ZipWindow">
 
-    <Grid>
-        <Viewbox>
-        <StackPanel Margin="10, 100" HorizontalAlignment="Center" Width="500">
-            <Label FontSize="20"  Foreground="White" Content="Folder Location:" Target="{Binding ElementName=txtName}" />
-                <StackPanel Orientation="Horizontal">
-                    <TextBox x:Name="folderLocationText" Width="500" Padding="0,0,30,0" Height="20" FontSize="14" Text="C:/Users/"/>
-                    <Button x:Name="openFolderButton" Click="openFolderButton_Click">
-                        <Image Height="18" Source="images/folder_icon.png" Margin="-30, 0,0,0"/>
-                    </Button>
-                </StackPanel>
-                <Label FontSize="20" Foreground="White" Content="Zip Folder Name:" Target="{Binding ElementName=txtMail}" />
-                <TextBox Name="newZipFolderName" Text="NyMapp.molk" Height="20" FontSize="14" Padding="0,0,30,0"/>
-                
-        <Button x:Name="OkButton" Click="OkButton_Click" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="50" HorizontalContentAlignment="Center" Margin="10">
-            <Button.Style>
-                <Style TargetType="{x:Type Button}">
-                    <Setter Property="Background" Value="White"/>
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="{x:Type Button}">
-                                <Border Background="{TemplateBinding Background}" BorderThickness="1" BorderBrush="Black">
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="#5F2383"/>
-                            <Setter Property="Foreground" Value="White"/>
+    <Border Background="#FF321759"
+            CornerRadius="20">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <!--Molk logo-->
+            <Image Source="img/logo.png" 
+                   HorizontalAlignment="Left"
+                   Margin="10,5,0,0"/>
+
+            <!--Top right corner close button-->
+            <Button Name="xButton" 
+                    Background="Transparent"
+                    Margin="0,0,15,0"
+                    HorizontalAlignment="Right"
+                    Grid.Column="2"
+                    Width="25">
+                <Image Source="img/x-icon.png"></Image>
+                <!--Close button style-->
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Transparent"/>
                             </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </Button.Style>
-                    <StackPanel Margin="5"
-                    Orientation="Horizontal">
-                        <TextBlock Text="OK" FontSize="30"
-                       Margin="0,0,10,0"/>
-                        <Image Source="images/checkmark1.png" 
-                   Height="27"/>
-                    </StackPanel>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="25" Height="25"
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Bottom"
+                                              HorizontalAlignment="Right"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <!--Left side menu buttons-->
+            <StackPanel Grid.Row="1">
+                <Button Content="Home"
+                             Height="50"
+                             Foreground="#FF080425"
+                             FontSize="15"
+                             Name="HomeButton"
+                        Click="HomeButton_Click"
+                             FontWeight="Bold"
+                             HorizontalAlignment="Center"
+                             Margin="0,20,0,0">
+                    <!--Left side button style-->
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#FFE4A064"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="LightSteelBlue"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="100" Height="40" 
+                                    CornerRadius="12"
+                                    Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
                 </Button>
-                
+                <Button Content="Tools"
+                             Height="50"
+                             Foreground="#FF080425"
+                             FontSize="15"
+                             FontWeight="Bold"
+                             HorizontalAlignment="Center"
+                             Margin="0,20,0,0">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#FFE4A064"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="LightSteelBlue"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="100" Height="40" 
+                                    CornerRadius="12"
+                                    Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button Content="Help Me!"
+                             Height="50"
+                             Foreground="#FF080425"
+                             FontSize="15"
+                             FontWeight="Bold"
+                             HorizontalAlignment="Center"
+                             Margin="0,20,0,0">
+                    <Button.Style>
+                        <Style TargetType="Button">
+
+                            <Setter Property="Background" Value="#FFE4A064"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="LightSteelBlue"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="100" Height="40" 
+                                    CornerRadius="12"
+                                    Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
             </StackPanel>
-        </Viewbox>
-        
-    </Grid>
+            <Grid Grid.Row="1" Grid.Column="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel>
+                    <Grid Grid.Column="0"
+                        Margin="20,30,0,0">
+                        <Label FontSize="20" Foreground="White" Content="Folder Location:" Target="{Binding ElementName=txtMail}" Margin="2,40,2,0"/>
+                        <StackPanel>
+                            <TextBox
+                            FontSize="20"
+                            Name="folderLocationText"
+                            Text="C:/Users/"
+                            VerticalAlignment="Top" Margin="2,80,2,0"
+                        />
+                            <Button x:Name="openFolderButton" Click="openFolderButton_Click" HorizontalAlignment="Right" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Margin="0,-30,0,0">
+                                <Image Height="18" Source="images/folder_icon.png" Margin="-30,0,0,0"/>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Column="0"
+                        Margin="20,30,0,0">
+                        <Label FontSize="20" Foreground="White" Content="Zip Folder Name:" Target="{Binding ElementName=txtMail}" Margin="2,0,2,0"/>
+                        <TextBox
+                            FontSize="20"
+                            VerticalAlignment="Top" Margin="2,40,2,0"
+                            Text="NewMap.molk"
+                        />
+                        <Button Grid.Row="0"
+                            Height="50"
+                            Margin="0,100,0,0"
+                            Click="OkButton_Click">
+                            <StackPanel Margin="5"
+                                    Orientation="Horizontal">
+                                <TextBlock Text="OK" FontSize="30"
+                                     Margin="0,0,10,0"/>
+                                <Image Source="images/checkmark1.png" 
+                                    Height="27"/>
+                            </StackPanel>
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="LightBlue"/>
+                                    <Setter Property="BorderThickness" Value="0"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="LightSteelBlue"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Width="150" 
+                                            Height="50" 
+                                        CornerRadius="12"
+                                        Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center"
+                                                HorizontalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
 </Page>

@@ -6,9 +6,7 @@
         xmlns:local="clr-namespace:zipprogram"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
-        WindowStyle="None"
-        ResizeMode="NoResize"
-        AllowsTransparency="True"
+        
         Background="Transparent">
     <Border Background="#FF321759"
             CornerRadius="20">
@@ -30,7 +28,6 @@
 
             <!--Top right corner close button-->
             <Button Name="xButton" 
-                    Click="xButtonClick"
                     Background="Transparent"
                     Margin="0,0,15,0"
                     HorizontalAlignment="Right"

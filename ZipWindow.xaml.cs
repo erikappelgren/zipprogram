@@ -20,7 +20,6 @@ namespace zipprogram
     public partial class ZipWindow : Page
     {
         public ListBox lbFiles { get; set; }
-
         public ZipWindow(ListBox lbFiles)
         {
             this.lbFiles = lbFiles;
@@ -64,6 +63,12 @@ namespace zipprogram
             startInfo.Arguments = command;
             Process proc = Process.Start(startInfo);
 
+        }
+
+        private void HomeButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow main = new MainWindow();
+            this.Content = main;
         }
     }
 }

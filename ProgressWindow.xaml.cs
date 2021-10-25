@@ -35,10 +35,16 @@ namespace zipprogram
 
 		void worker_DoWork(object sender, DoWorkEventArgs e)
 		{
-			for (int i = 0; i < 100; i++)
+			for (int i = 0; i < 101; i++)
 			{
 				(sender as BackgroundWorker).ReportProgress(i);
-				Thread.Sleep(100);
+				Thread.Sleep(15);
+				if (i == 100)
+				{
+					Dispatcher.Invoke(() => {
+						Close();
+					});
+				}
 			}
 		}
 
@@ -47,4 +53,4 @@ namespace zipprogram
 			pbStatus.Value = e.ProgressPercentage;
 		}
 	}
-}
+	}
