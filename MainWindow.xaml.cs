@@ -100,6 +100,13 @@ namespace zipprogram
             }
         }
 
+        private void MouseDownOnWindow(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
     }
 
     public class File

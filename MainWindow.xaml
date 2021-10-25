@@ -11,7 +11,7 @@
         AllowsTransparency="True"
         Background="Transparent">
     <Border Background="#FF321759"
-            CornerRadius="20">
+            CornerRadius="20" MouseDown="MouseDownOnWindow">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="120"/>
