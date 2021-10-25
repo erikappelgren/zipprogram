@@ -39,30 +39,37 @@ namespace zipprogram
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            ProgressWindow p = new ProgressWindow();
+            ProgressWindow p = new ProgressWindow(lbFiles);
             p.Show();
         }
 
         //zip selected files
         private void btnZip_Click(object sender, RoutedEventArgs e)
         {
+            //ProgressBar pbStatus = new ProgressBar();
+            //pbStatus.Visibility = Visibility.Visible;
+            //pbStatus.IsIndeterminate = true;
+
+            //pbStatus.Visibility = Visibility.Visible;
+            //pbStatus.IsIndeterminate = true;
+
             StringBuilder sb = new StringBuilder();
             foreach (object item in lbFiles.SelectedItems)
             {
                 sb.Append(item.ToString());
                 sb.Append(" ");
             }
-            MessageBox.Show(sb.ToString());
 
-            string command = "-v " + "Test10.molk " + sb.ToString();
-            MessageBox.Show(command);
+            string command = "-v " + newZipFolderName.Text + " " + sb.ToString();
 
             var startInfo = new ProcessStartInfo();
-            startInfo.WorkingDirectory = @"C:\Users\Olivi\source\repos";
+            startInfo.WorkingDirectory = folderLocationText.Text;
             startInfo.FileName = @"C:\Users\Olivi\source\repos\zipprogram\molk.exe";
-            //startInfo.Arguments = @"-v Test8.molk *.txt";
             startInfo.Arguments = command;
             Process proc = Process.Start(startInfo);
+
+            //pbStatus.Visibility = Visibility.Collapsed;
+            //proc.StandardOutput.ReadToEnd();
 
         }
     }

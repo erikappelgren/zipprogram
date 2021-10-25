@@ -21,8 +21,10 @@
                 </StackPanel>
                 <Label FontSize="20" Foreground="White" Content="Zip Folder Name:" Target="{Binding ElementName=txtMail}" />
                 <TextBox Name="newZipFolderName" Text="NyMapp.molk" Height="20" FontSize="14" Padding="0,0,30,0"/>
-                
-        <Button x:Name="OkButton" Click="OkButton_Click" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="50" HorizontalContentAlignment="Center" Margin="10">
+
+                <ProgressBar Minimum="0" Maximum="100" Name="pbStatus" IsIndeterminate="false" Visibility="Hidden"/>
+
+                <Button x:Name="OkButton" Click="btnZip_Click" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="50" HorizontalContentAlignment="Center" Margin="10">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background" Value="White"/>

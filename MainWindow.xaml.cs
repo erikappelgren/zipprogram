@@ -37,6 +37,12 @@ namespace zipprogram
             this.Content = p;
         }
 
+        private void Button_Click_Unmolk(object sender, RoutedEventArgs e)
+        {
+            UnzipWindow p = new UnzipWindow(lbFiles);
+            this.Content = p;
+        }
+
         private void xButtonClick(object sender, RoutedEventArgs e)
         {
             Close();
@@ -70,7 +76,8 @@ namespace zipprogram
             if (openFileDialog.ShowDialog() == true)
             {
                 foreach (string filename in openFileDialog.FileNames)
-                    lbFiles.Items.Add(System.IO.Path.GetFileName(filename));
+                    lbFiles.Items.Add(System.IO.Path.GetFullPath(filename));
+                //lbFiles.Items.Add(System.IO.Path.GetFileName(filename));
                 FilePath.Text = openFileDialog.FileName;
             }
         }
