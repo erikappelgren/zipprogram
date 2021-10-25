@@ -29,13 +29,54 @@ namespace zipprogram
         {
             InitializeComponent();
         }
-
-        private void ButtonClicked(object sender, RoutedEventArgs e)
+        private void MolkButton(object sender, RoutedEventArgs e)
         {
-            ZipWindow p = new ZipWindow(lbFiles);
-            //myFrameInCurrentWindow.Navigate(p);
-            this.Content = p;
+            try
+            {
+                if (lbFiles.Items.Count != 0)
+                {
+                    ZipWindow p = new ZipWindow(lbFiles);
+                    //myFrameInCurrentWindow.Navigate(p);
+                    this.Content = p;
+                }
+                else
+                {
+                    PopupMessage Msg = new PopupMessage();
+                    Msg.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                    Msg.Show();
+                    Debug.WriteLine("Select File");
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
+
+        //private void ButtonClicked(object sender, RoutedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (lbFiles.Items.Count != 0)
+        //        {
+        //            ZipWindow p = new ZipWindow(lbFiles);
+        //            //myFrameInCurrentWindow.Navigate(p);
+        //            this.Content = p;
+        //        }
+        //        else
+        //        {
+        //            PopupMessage Msg = new PopupMessage();
+        //            Msg.Show();
+        //            Debug.WriteLine("Select File");
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //        throw;
+        //    }
+        //}
 
         private void xButtonClick(object sender, RoutedEventArgs e)
         {
@@ -55,10 +96,6 @@ namespace zipprogram
         }
         */
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         //select the files to be zipped
         private void btnOpenFile_Click(object sender, RoutedEventArgs e)
@@ -103,6 +140,7 @@ namespace zipprogram
                 }
             }
         }
+
     }
 
     public class File

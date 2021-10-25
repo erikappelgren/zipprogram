@@ -211,7 +211,7 @@
                     <CheckBox
                         Margin="20,10,0,0" Name="cbAllFeatures" Checked="cbAllFeatures_CheckedChanged" Unchecked="cbAllFeatures_CheckedChanged">
                         <TextBlock>
-				        <Run Foreground="White" FontWeight="Bold">Select All</Run>
+				        <Run Foreground="White" FontWeight="Bold" Text="Select All"></Run>
                         </TextBlock>
                     </CheckBox>
                 </Grid>
@@ -265,8 +265,7 @@
 
                         <Button Grid.Row="0"
                             Height="50"
-                            Margin="5"
-                            Click="ButtonClicked">
+                            Margin="5" Click="MolkButton">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Height="15"
                                            Margin="10,0,10,0"
