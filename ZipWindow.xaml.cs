@@ -19,8 +19,12 @@ namespace zipprogram
     /// </summary>
     public partial class ZipWindow : Page
     {
-        public ZipWindow()
+        public ListBox lbFiles { get; set; }
+
+        public ZipWindow(ListBox lbFiles)
         {
+            this.lbFiles = lbFiles;
+
             InitializeComponent();
         }
 
@@ -37,6 +41,30 @@ namespace zipprogram
         {
             ProgressWindow p = new ProgressWindow();
             p.Show();
+        }
+
+        //zip selected files
+        private void btnZip_Click(object sender, RoutedEventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (object item in lbFiles.SelectedItems)
+            {
+                sb.Append(item.ToString());
+                sb.Append(" ");
+            }
+            MessageBox.Show(sb.ToString());
+
+            string command = "-v " + "Test10.molk " + sb.ToString();
+            MessageBox.Show(command);
+
+
+            var startInfo = new ProcessStartInfo();
+            startInfo.WorkingDirectory = @"C:\Users\Olivi\source\repos";
+            startInfo.FileName = @"C:\Users\Olivi\source\repos\zipprogram\molk.exe";
+            //startInfo.Arguments = @"-v Test8.molk *.txt";
+            startInfo.Arguments = command;
+            Process proc = Process.Start(startInfo);
+
         }
     }
 }
