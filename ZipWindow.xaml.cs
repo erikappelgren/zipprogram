@@ -57,7 +57,6 @@ namespace zipprogram
             string command = "-v " + "Test10.molk " + sb.ToString();
             MessageBox.Show(command);
 
-
             var startInfo = new ProcessStartInfo();
             startInfo.WorkingDirectory = @"C:\Users\Olivi\source\repos";
             startInfo.FileName = @"C:\Users\Olivi\source\repos\zipprogram\molk.exe";
