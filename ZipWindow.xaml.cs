@@ -23,7 +23,6 @@ namespace zipprogram
         public ZipWindow(ListBox lbFiles)
         {
             this.lbFiles = lbFiles;
-
             InitializeComponent();
         }
 
@@ -40,6 +39,8 @@ namespace zipprogram
         {
             ProgressWindow p = new ProgressWindow();
             p.Show();
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow?.ChangeView(new MainPage());
         }
 
         //zip selected files
@@ -67,8 +68,8 @@ namespace zipprogram
 
         private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow main = new MainWindow();
-            this.Content = main;
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow?.ChangeView(new MainPage());
         }
     }
 }
