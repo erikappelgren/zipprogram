@@ -38,6 +38,7 @@ namespace zipprogram
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             ProgressWindow p = new ProgressWindow();
+            p.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             p.Show();
             var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow?.ChangeView(new MainPage());
