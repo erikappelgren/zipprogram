@@ -62,12 +62,12 @@
             <!--Left side menu buttons-->
             <StackPanel Grid.Row="1">
                 <Button Content="Home"
-                             Height="50"
-                             Foreground="#FF080425"
-                             FontSize="15"
-                             FontWeight="Bold"
-                             HorizontalAlignment="Center"
-                             Margin="0,20,0,0">
+                        Height="50"
+                        Foreground="#FF080425"
+                        FontSize="15"
+                        FontWeight="Bold"
+                        HorizontalAlignment="Center"
+                        Margin="0,20,0,0">
                     <!--Left side button style-->
                     <Button.Style>
                         <Style TargetType="Button">
@@ -208,8 +208,10 @@
                 <!--Checkbox row-->
                 <Grid
                     Grid.Row="1">
-                    <CheckBox
-                        Margin="20,10,0,0" Name="cbAllFeatures" Checked="cbAllFeatures_CheckedChanged" Unchecked="cbAllFeatures_CheckedChanged">
+                    <CheckBox Margin="20,10,0,0" 
+                              Name="cbAllFeatures"
+                              Checked="cbAllFeatures_CheckedChanged"
+                              Unchecked="cbAllFeatures_CheckedChanged">
                         <TextBlock>
 				        <Run Foreground="White" FontWeight="Bold" Text="Select All"></Run>
                         </TextBlock>
@@ -228,9 +230,9 @@
                             <ListBox
                                 x:Name="lbFiles"
                                 SelectionMode="Multiple"
-                                Height="{Binding ActualWidth, ElementName=PreviewTextBox}"
                                 BorderThickness="1"
-                                Padding="10">
+                                Padding="10"
+                                Tag ="CoasterId">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <CheckBox Content="{Binding .}" Tag="{Binding CoasterId}" 

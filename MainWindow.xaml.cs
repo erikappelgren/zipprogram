@@ -33,7 +33,8 @@ namespace zipprogram
         {
             try
             {
-                if (lbFiles.Items.Count != 0)
+                PopupMessage Msg = new PopupMessage();
+                if (lbFiles.SelectedIndex != -1 )
                 {
                     ZipWindow p = new ZipWindow(lbFiles);
                     //myFrameInCurrentWindow.Navigate(p);
@@ -41,61 +42,20 @@ namespace zipprogram
                 }
                 else
                 {
-                    PopupMessage Msg = new PopupMessage();
                     Msg.WindowStartupLocation = WindowStartupLocation.CenterScreen;
                     Msg.Show();
-                    Debug.WriteLine("Select File");
                 }
             }
             catch (Exception)
-            {
-
+            {  
                 throw;
             }
         }
 
-        //private void ButtonClicked(object sender, RoutedEventArgs e)
-        //{
-        //    try
-        //    {
-        //        if (lbFiles.Items.Count != 0)
-        //        {
-        //            ZipWindow p = new ZipWindow(lbFiles);
-        //            //myFrameInCurrentWindow.Navigate(p);
-        //            this.Content = p;
-        //        }
-        //        else
-        //        {
-        //            PopupMessage Msg = new PopupMessage();
-        //            Msg.Show();
-        //            Debug.WriteLine("Select File");
-        //        }
-        //    }
-        //    catch (Exception)
-        //    {
-
-        //        throw;
-        //    }
-        //}
-
         private void xButtonClick(object sender, RoutedEventArgs e)
         {
-            Close();
+            App.Current.Shutdown();
         }
-
-        /*
-        private void OpenFileButton(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "All files (*.*)|*.*";
-            if (openFileDialog.ShowDialog() == true)
-            {
-                PreviewBox.Text = System.IO.Path.GetFileName(openFileDialog.FileName);
-                FilePath.Text = openFileDialog.FileName;
-            }
-        }
-        */
-
 
         //select the files to be zipped
         private void btnOpenFile_Click(object sender, RoutedEventArgs e)
@@ -112,7 +72,6 @@ namespace zipprogram
             }
         }
 
-        
         private void cbAllFeatures_CheckedChanged(object sender, RoutedEventArgs e)
         {
             bool newVal = (cbAllFeatures.IsChecked == true);
@@ -123,7 +82,7 @@ namespace zipprogram
                 item.IsChecked = newVal;
             }
         }
-
+        
         private void cbFeature_CheckedChanged(object sender, RoutedEventArgs e)
         {
             cbAllFeatures.IsChecked = null;
