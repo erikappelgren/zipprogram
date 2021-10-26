@@ -113,8 +113,24 @@ namespace zipprogram
 
         private void UnzipClick(object sender, RoutedEventArgs e)
         {
-            var mainWindow = (MainWindow)Application.Current.MainWindow;
-            mainWindow?.ChangeView(new UnzipWindow(lbFiles));
+            try
+            {
+                PopupMessage Msg = new PopupMessage();
+                if (lbFiles.SelectedIndex != -1)
+                {
+                    var mainWindow = (MainWindow)Application.Current.MainWindow;
+                    mainWindow?.ChangeView(new UnzipWindow(lbFiles));
+                }
+                else
+                {
+                    Msg.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                    Msg.Show();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 
