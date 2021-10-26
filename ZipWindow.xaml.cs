@@ -49,12 +49,13 @@ namespace zipprogram
 
             var startInfo = new ProcessStartInfo();
             startInfo.WorkingDirectory = folderLocationText.Text;
-            startInfo.FileName = @"C:\Users\Olivi\source\repos\zipprogram\molk.exe";
+            startInfo.FileName = @"C:\Users\erika\OneDrive\Dokument\molk.exe";
             startInfo.Arguments = command;
             Process proc = Process.Start(startInfo);
 
             ProgressWindow p = new ProgressWindow();
             p.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
             p.Show();
             var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow?.ChangeView(new MainPage());

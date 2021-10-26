@@ -51,7 +51,9 @@ namespace zipprogram
 
         private void xButtonClick(object sender, RoutedEventArgs e)
         {
-            App.Current.Shutdown();
+            ExitConfirmation exit = new ExitConfirmation();
+            exit.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            exit.Show();
         }
 
         /*

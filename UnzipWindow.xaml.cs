@@ -46,17 +46,17 @@ namespace zipprogram
             }
 
             string command = "-j " + sb.ToString() + "-d " + filesLocationText.Text;
-            MessageBox.Show(command);
 
             var startInfo = new ProcessStartInfo();
             //startInfo.WorkingDirectory = folderLocationText.Text;
-            startInfo.FileName = @"C:\Users\Olivi\source\repos\zipprogram\unmolk.exe";
+            startInfo.FileName = @"C:\Users\erika\OneDrive\Dokument\molk.exe";
             startInfo.Arguments = command;
 
             Process proc = Process.Start(startInfo);
 
             ProgressWindow p = new ProgressWindow();
             p.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            p.ZipOrUnzip(1);
             p.Show();
             var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow?.ChangeView(new MainPage());
