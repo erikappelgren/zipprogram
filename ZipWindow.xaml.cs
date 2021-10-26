@@ -32,6 +32,7 @@ namespace zipprogram
             if (dialog.ShowDialog().GetValueOrDefault())
             {
                 folderLocationText.Text = dialog.SelectedPath;
+                
             }
         }
 
