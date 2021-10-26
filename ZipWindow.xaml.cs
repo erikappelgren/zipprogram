@@ -33,11 +33,7 @@ namespace zipprogram
             {
                 folderLocationText.Text = dialog.SelectedPath;
             }
-            var dia2 = new Ookii.Dialogs.Wpf.VistaFolderBrowserDialog();
-            foreach(char filename in dia2.SelectedPath)
-            {
-                Debug.WriteLine(filename);
-            }
+            
         }
 
         //zip selected files

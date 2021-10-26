@@ -72,15 +72,25 @@ namespace zipprogram
         //select the files to be zipped
         private void btnOpenFile_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Multiselect = true;
-            openFileDialog.Filter = "All files (*.*)|*.*";
-            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            if (openFileDialog.ShowDialog() == true)
+            //OpenFileDialog openFileDialog = new OpenFileDialog();
+            //openFileDialog.Multiselect = true;
+            //openFileDialog.Filter = "All files (*.*)|*.*";
+            //openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            //if (openFileDialog.ShowDialog() == true)
+            //{
+            //    foreach (string filename in openFileDialog.FileNames)
+            //        lbFiles.Items.Add(System.IO.Path.GetFullPath(filename));
+            //    FilePath.Text = openFileDialog.FileName;
+            //}
+            var dialog = new Ookii.Dialogs.Wpf.VistaFolderBrowserDialog();
+            if (dialog.ShowDialog().GetValueOrDefault())
             {
-                foreach (string filename in openFileDialog.FileNames)
-                    lbFiles.Items.Add(System.IO.Path.GetFullPath(filename));
-                FilePath.Text = openFileDialog.FileName;
+                string[] fileArray = Directory.GetFiles(dialog.SelectedPath);
+                foreach(string s in fileArray)
+                {
+                    lbFiles.Items.Add(System.IO.Path.GetFullPath(s));
+                    FilePath.Text = dialog.SelectedPath;
+                }
             }
         }
 
