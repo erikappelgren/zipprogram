@@ -58,7 +58,6 @@ namespace zipprogram
         private void xButtonClick(object sender, RoutedEventArgs e)
         {
             App.Current.Shutdown();
-            //Close();
         }
         private void MolkButton(object sender, RoutedEventArgs e)
         {
