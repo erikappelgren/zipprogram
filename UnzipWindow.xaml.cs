@@ -31,7 +31,7 @@ namespace zipprogram
             var dialog = new Ookii.Dialogs.Wpf.VistaFolderBrowserDialog();
             if (dialog.ShowDialog().GetValueOrDefault())
             {
-                folderLocationText.Text = dialog.SelectedPath;
+                filesLocationText.Text = dialog.SelectedPath;
             }
         }
 
@@ -45,7 +45,7 @@ namespace zipprogram
                 sb.Append(" ");
             }
 
-            string command = "-j " + sb.ToString() + "-d " + folderLocationText.Text;
+            string command = "-j " + sb.ToString() + "-d " + filesLocationText.Text;
             MessageBox.Show(command);
 
             var startInfo = new ProcessStartInfo();
@@ -55,6 +55,17 @@ namespace zipprogram
 
             Process proc = Process.Start(startInfo);
 
+            ProgressWindow p = new ProgressWindow();
+            p.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            p.Show();
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow?.ChangeView(new MainPage());
+        }
+
+        private void HomeButton_Click(object sender, RoutedEventArgs e)
+        {
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow?.ChangeView(new MainPage());
         }
     }
 }

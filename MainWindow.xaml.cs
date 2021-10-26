@@ -15,8 +15,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Microsoft.Win32;
-using System.IO;
 
 namespace zipprogram
 {
@@ -28,24 +26,16 @@ namespace zipprogram
         public MainWindow()
         {
             InitializeComponent();
+            Application.Current.MainWindow = this;
+            Loaded += OnMainWindowLoaded;
         }
 
-        private void ButtonClicked(object sender, RoutedEventArgs e)
+        private void MouseDownOnWindow(object sender, MouseButtonEventArgs e)
         {
-            ZipWindow p = new ZipWindow(lbFiles);
-            //myFrameInCurrentWindow.Navigate(p);
-            this.Content = p;
-        }
-
-        private void Button_Click_Unmolk(object sender, RoutedEventArgs e)
-        {
-            UnzipWindow p = new UnzipWindow(lbFiles);
-            this.Content = p;
-        }
-
-        private void xButtonClick(object sender, RoutedEventArgs e)
-        {
-            Close();
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
         }
 
         /*
@@ -61,67 +51,19 @@ namespace zipprogram
         }
         */
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void xButtonClick(object sender, RoutedEventArgs e)
         {
-
+            App.Current.Shutdown();
         }
 
-        //select the files to be zipped
-        private void btnOpenFile_Click(object sender, RoutedEventArgs e)
+        private void OnMainWindowLoaded(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Multiselect = true;
-            openFileDialog.Filter = "All files (*.*)|*.*";
-            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            if (openFileDialog.ShowDialog() == true)
-            {
-                foreach (string filename in openFileDialog.FileNames)
-                    lbFiles.Items.Add(System.IO.Path.GetFullPath(filename));
-                //lbFiles.Items.Add(System.IO.Path.GetFileName(filename));
-                FilePath.Text = openFileDialog.FileName;
-            }
+            ChangeView(new MainPage());
         }
 
-        
-        private void cbAllFeatures_CheckedChanged(object sender, RoutedEventArgs e)
+        public void ChangeView(Page view)
         {
-            bool newVal = (cbAllFeatures.IsChecked == true);
-
-            for (int i = 0; i < lbFiles.Items.Count; i++)
-            {
-                CheckBox item = lbFiles.Items[i] as CheckBox;
-                item.IsChecked = newVal;
-            }
-        }
-
-        private void cbFeature_CheckedChanged(object sender, RoutedEventArgs e)
-        {
-            cbAllFeatures.IsChecked = null;
-
-            foreach (CheckBox item in lbFiles.Items)
-            {
-                if ((item.IsChecked == true))
-                {
-                    cbAllFeatures.IsChecked = true;
-                }
-                else if ((item.IsChecked == false))
-                {
-                    cbAllFeatures.IsChecked = false;
-                }
-            }
-        }
-    }
-
-    public class File
-    {
-        public string Name { get; set; }
-        public bool IsChecked { get; set; }
-        
-        public File(string Name, bool IsChecked)
-        {
-            this.Name = Name;
-            this.IsChecked = IsChecked;
-            
-        }
+            MainFrame.NavigationService.Navigate(view);
+        }  
     }
 }

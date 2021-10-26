@@ -20,12 +20,8 @@ namespace zipprogram
     /// </summary>
     public partial class ProgressWindow : Window
     {
-		public ListBox lbFiles { get; set; }
-
-		public ProgressWindow(ListBox lbFiles)
-        {
-			this.lbFiles = lbFiles;
-
+		public ProgressWindow()
+		{ 
 			InitializeComponent();
         }
 
@@ -41,12 +37,18 @@ namespace zipprogram
 
 		void worker_DoWork(object sender, DoWorkEventArgs e)
 		{
-            for (int i = 0; i < 100; i++)
-            {
-                (sender as BackgroundWorker).ReportProgress(i);
-                Thread.Sleep(100);
-            }
-        }
+			for (int i = 0; i < 101; i++)
+			{
+				(sender as BackgroundWorker).ReportProgress(i);
+				Thread.Sleep(15);
+				if (i == 100)
+				{
+					Dispatcher.Invoke(() => {
+						Close();
+					});
+				}
+			}
+		}
 
 		void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
 		{

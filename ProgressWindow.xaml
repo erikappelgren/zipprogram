@@ -5,9 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:zipprogram"
         mc:Ignorable="d"
-        Title="ProgressWindow" Height="100" Width="300"
+        Background="#FF321759"
+        Title="ProgressWindow" Height="150" Width="350"
         ContentRendered="Window_ContentRendered">
     <Grid>
-        <ProgressBar Minimum="0" Maximum="100" Name="pbStatus" />
+        <StackPanel>
+            <Label Content="Zipping your files..." HorizontalAlignment="Center" FontSize="20" Margin="0,10,0,0" Foreground="LightCyan"></Label>
+        <ProgressBar Minimum="0" Maximum="100" Name="pbStatus" Margin="15,30,15,0" Height="20"/>
+        </StackPanel>
     </Grid>
 </Window>

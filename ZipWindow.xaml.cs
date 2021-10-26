@@ -20,11 +20,9 @@ namespace zipprogram
     public partial class ZipWindow : Page
     {
         public ListBox lbFiles { get; set; }
-
         public ZipWindow(ListBox lbFiles)
         {
             this.lbFiles = lbFiles;
-
             InitializeComponent();
         }
 
@@ -35,12 +33,6 @@ namespace zipprogram
             {
                 folderLocationText.Text = dialog.SelectedPath;
             }
-        }
-
-        private void OkButton_Click(object sender, RoutedEventArgs e)
-        {
-            ProgressWindow p = new ProgressWindow(lbFiles);
-            p.Show();
         }
 
         //zip selected files
@@ -60,6 +52,18 @@ namespace zipprogram
             startInfo.FileName = @"C:\Users\Olivi\source\repos\zipprogram\molk.exe";
             startInfo.Arguments = command;
             Process proc = Process.Start(startInfo);
+
+            ProgressWindow p = new ProgressWindow();
+            p.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            p.Show();
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow?.ChangeView(new MainPage());
+        }
+
+        private void HomeButton_Click(object sender, RoutedEventArgs e)
+        {
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow?.ChangeView(new MainPage());
         }
     }
 }
