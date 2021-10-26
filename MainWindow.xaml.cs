@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +26,19 @@ namespace zipprogram
         public MainWindow()
         {
             InitializeComponent();
+            Application.Current.MainWindow = this;
+            Loaded += OnMainWindowLoaded;
         }
+
+        private void OnMainWindowLoaded(object sender, RoutedEventArgs e)
+        {
+            ChangeView(new MainPage());
+        }
+
+        public void ChangeView(Page view)
+        {
+            MainFrame.NavigationService.Navigate(view);
+        }
+
     }
 }

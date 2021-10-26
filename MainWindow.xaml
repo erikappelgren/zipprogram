@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:zipprogram"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        
+        Background="Transparent">
     <Grid>
-
+        <Frame 
+        Name="MainFrame"
+        Background="Transparent"
+        NavigationUIVisibility="Hidden"/>
     </Grid>
+    
 </Window>
