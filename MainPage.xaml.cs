@@ -29,15 +29,53 @@ namespace zipprogram
         }
         private void ButtonClicked(object sender, RoutedEventArgs e)
         {
-            var mainWindow = (MainWindow)Application.Current.MainWindow;
-            mainWindow?.ChangeView(new ZipWindow(lbFiles));
+            
+            try
+            {
+                PopupMessage Msg = new PopupMessage();
+                if (lbFiles.SelectedIndex != -1)
+                {
+                    var mainWindow = (MainWindow)Application.Current.MainWindow;
+                    mainWindow?.ChangeView(new ZipWindow(lbFiles));
+                }
+                else
+                {
+                    Msg.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                    Msg.Show();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         private void xButtonClick(object sender, RoutedEventArgs e)
         {
             //Close();
         }
-
+        private void MolkButton(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                PopupMessage Msg = new PopupMessage();
+                if (lbFiles.SelectedIndex != -1)
+                {
+                    ZipWindow p = new ZipWindow(lbFiles);
+                    //myFrameInCurrentWindow.Navigate(p);
+                    this.Content = p;
+                }
+                else
+                {
+                    Msg.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                    Msg.Show();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
         /*
         private void OpenFileButton(object sender, RoutedEventArgs e)
         {
@@ -104,13 +142,13 @@ namespace zipprogram
 
     public class File
     {
-        public string Name { get; set; }
-        public bool IsChecked { get; set; }
+        public string _Name { get; set; }
+        public bool _IsChecked { get; set; }
 
         public File(string Name, bool IsChecked)
         {
-            this.Name = Name;
-            this.IsChecked = IsChecked;
+            this._Name = Name;
+            this._IsChecked = IsChecked;
 
         }
     }

@@ -29,34 +29,14 @@ namespace zipprogram
             Application.Current.MainWindow = this;
             Loaded += OnMainWindowLoaded;
         }
-        private void MolkButton(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                PopupMessage Msg = new PopupMessage();
-                if (lbFiles.SelectedIndex != -1 )
-                {
-                    ZipWindow p = new ZipWindow(lbFiles);
-                    //myFrameInCurrentWindow.Navigate(p);
-                    this.Content = p;
-                }
-                else
-                {
-                    Msg.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-                    Msg.Show();
-                }
-            }
-            catch (Exception)
-            {  
-                throw;
-            }
-        }
+        
+        
 
         private void xButtonClick(object sender, RoutedEventArgs e)
         {
             App.Current.Shutdown();
 
-
+        }
         private void OnMainWindowLoaded(object sender, RoutedEventArgs e)
         {
             ChangeView(new MainPage());
@@ -68,47 +48,6 @@ namespace zipprogram
         }
 
 
-        private void cbAllFeatures_CheckedChanged(object sender, RoutedEventArgs e)
-        {
-            bool newVal = (cbAllFeatures.IsChecked == true);
-
-            for (int i = 0; i < lbFiles.Items.Count; i++)
-            {
-                CheckBox item = lbFiles.Items[i] as CheckBox;
-                item.IsChecked = newVal;
-            }
-        }
-        
-        private void cbFeature_CheckedChanged(object sender, RoutedEventArgs e)
-        {
-            cbAllFeatures.IsChecked = null;
-
-            foreach (CheckBox item in lbFiles.Items)
-            {
-                if ((item.IsChecked == true))
-                {
-                    cbAllFeatures.IsChecked = true;
-                }
-                else if ((item.IsChecked == false))
-                {
-                    cbAllFeatures.IsChecked = false;
-                }
-            }
-        }
-
-    }
-
-    public class File
-    {
-        public string Name { get; set; }
-        public bool IsChecked { get; set; }
-        
-        public File(string Name, bool IsChecked)
-        {
-            this.Name = Name;
-            this.IsChecked = IsChecked;
-            
-        }
-
+       
     }
 }
