@@ -29,8 +29,14 @@ namespace zipprogram
             Application.Current.MainWindow = this;
             Loaded += OnMainWindowLoaded;
         }
-        
-        
+
+        private void MouseDownOnWindow(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
 
         private void xButtonClick(object sender, RoutedEventArgs e)
         {

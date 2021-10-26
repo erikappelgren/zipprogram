@@ -6,16 +6,18 @@
         xmlns:local="clr-namespace:zipprogram"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
-        
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        AllowsTransparency="True"
         Background="Transparent">
     <Border Background="#FF321759"
             CornerRadius="20" MouseDown="MouseDownOnWindow">
         <Grid>
-           
-        <Frame 
+
+            <Frame 
         Name="MainFrame"
         Background="Transparent"
         NavigationUIVisibility="Hidden"/>
-    </Grid>
-    
+        </Grid>
+    </Border>
 </Window>
