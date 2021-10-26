@@ -67,5 +67,12 @@ namespace zipprogram
             var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow?.ChangeView(new MainPage());
         }
+
+        private void xButton_Click(object sender, RoutedEventArgs e)
+        {
+            ExitConfirmation exit = new ExitConfirmation();
+            exit.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            exit.Show();
+        }
     }
 }

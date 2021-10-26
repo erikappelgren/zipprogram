@@ -33,6 +33,11 @@ namespace zipprogram
             {
                 folderLocationText.Text = dialog.SelectedPath;
             }
+            var dia2 = new Ookii.Dialogs.Wpf.VistaFolderBrowserDialog();
+            foreach(char filename in dia2.SelectedPath)
+            {
+                Debug.WriteLine(filename);
+            }
         }
 
         //zip selected files
@@ -65,6 +70,13 @@ namespace zipprogram
         {
             var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow?.ChangeView(new MainPage());
+        }
+
+        private void xButton_Click(object sender, RoutedEventArgs e)
+        {
+            ExitConfirmation exit = new ExitConfirmation();
+            exit.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            exit.Show();
         }
     }
 }

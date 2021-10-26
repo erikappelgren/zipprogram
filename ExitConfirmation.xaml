@@ -22,7 +22,7 @@
                         VerticalAlignment="Center"
                         Grid.Row="0">
                     <TextBlock TextAlignment="Center"
-                               FontSize="15"
+                               FontSize="24"
                                FontWeight="Bold" 
                                Margin="0,50,0,0">
                     <Run Foreground="Black"
@@ -30,8 +30,9 @@
                     </TextBlock>
                 </StackPanel>
                 <Button Grid.Row="1"
-                        Height="20"
+                        Height="30"
                         Width="80"
+                        FontSize="16"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"
                         Margin="0,0,80,20"
@@ -51,7 +52,7 @@
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border Width="80" 
-                                    Height="20" 
+                                    Height="30" 
                                     CornerRadius="12"
                                     Background="{TemplateBinding Background}">
                                 <ContentPresenter VerticalAlignment="Center"
@@ -61,12 +62,13 @@
                     </Button.Template>
                 </Button>
                 <Button Grid.Row="1"
-                        Height="20"
+                        Height="30"
                         Width="80"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Bottom"
                         Margin="80,0,20,20"
                         Content="Yes"
+                        FontSize="16"
                         Click="yesButton">
                     <Button.Style>
                         <Style TargetType="Button">
@@ -82,7 +84,7 @@
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border Width="80" 
-                                    Height="20" 
+                                    Height="30" 
                                     CornerRadius="12"
                                     Background="{TemplateBinding Background}">
                                 <ContentPresenter VerticalAlignment="Center"
