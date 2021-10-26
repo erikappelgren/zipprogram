@@ -35,15 +35,6 @@ namespace zipprogram
             }
         }
 
-        private void OkButton_Click(object sender, RoutedEventArgs e)
-        {
-            ProgressWindow p = new ProgressWindow();
-            p.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            p.Show();
-            var mainWindow = (MainWindow)Application.Current.MainWindow;
-            mainWindow?.ChangeView(new MainPage());
-        }
-
         //zip selected files
         private void btnZip_Click(object sender, RoutedEventArgs e)
         {
@@ -64,7 +55,11 @@ namespace zipprogram
             //startInfo.Arguments = @"-v Test8.molk *.txt";
             startInfo.Arguments = command;
             Process proc = Process.Start(startInfo);
-
+            ProgressWindow p = new ProgressWindow();
+            p.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            p.Show();
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow?.ChangeView(new MainPage());
         }
 
         private void HomeButton_Click(object sender, RoutedEventArgs e)
