@@ -49,38 +49,11 @@ namespace zipprogram
             }
         }
 
-        private void Button_Click_Unmolk(object sender, RoutedEventArgs e)
-        {
-            UnzipWindow p = new UnzipWindow(lbFiles);
-            this.Content = p;
-        }
-
         private void xButtonClick(object sender, RoutedEventArgs e)
         {
             App.Current.Shutdown();
         }
-        private void MolkButton(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                PopupMessage Msg = new PopupMessage();
-                if (lbFiles.SelectedIndex != -1)
-                {
-                    ZipWindow p = new ZipWindow(lbFiles);
-                    //myFrameInCurrentWindow.Navigate(p);
-                    this.Content = p;
-                }
-                else
-                {
-                    Msg.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-                    Msg.Show();
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
+
         /*
         private void OpenFileButton(object sender, RoutedEventArgs e)
         {
