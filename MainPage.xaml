@@ -299,7 +299,8 @@
                         </Button>
                         <Button Grid.Row="1"
                             Height="50"
-                            Margin="5">
+                            Margin="5"
+                            Click="UnzipClick">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Height="15"
                                            Margin="3,0,10,0"

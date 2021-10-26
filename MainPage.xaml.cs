@@ -95,6 +95,11 @@ namespace zipprogram
             }
         }
 
+        private void UnzipClick(object sender, RoutedEventArgs e)
+        {
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow?.ChangeView(new UnzipWindow());
+        }
     }
 
     public class File
