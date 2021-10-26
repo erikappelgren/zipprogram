@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,8 +19,11 @@ namespace zipprogram
     /// </summary>
     public partial class UnzipWindow : Page
     {
-        public UnzipWindow()
+        public ListBox lbFiles { get; set; }
+
+        public UnzipWindow(ListBox lbFiles)
         {
+            this.lbFiles = lbFiles;
             InitializeComponent();
         }
         private void openFolderButton_Click(object sender, RoutedEventArgs e)
@@ -30,16 +34,36 @@ namespace zipprogram
                 filesLocationText.Text = dialog.SelectedPath;
             }
         }
-        private void HomeButton_Click(object sender, RoutedEventArgs e)
+
+        //Unzip selected files
+        private void btnUnzip_Click(object sender, RoutedEventArgs e)
         {
-            var mainWindow = (MainWindow)Application.Current.MainWindow;
-            mainWindow?.ChangeView(new MainPage());
-        }
-        private void OkButton_Click(object sender, RoutedEventArgs e)
-        {
+            StringBuilder sb = new StringBuilder();
+            foreach (object item in lbFiles.SelectedItems)
+            {
+                sb.Append(item.ToString());
+                sb.Append(" ");
+            }
+
+            string command = "-j " + sb.ToString() + "-d " + filesLocationText.Text;
+            MessageBox.Show(command);
+
+            var startInfo = new ProcessStartInfo();
+            //startInfo.WorkingDirectory = folderLocationText.Text;
+            startInfo.FileName = @"C:\Users\Olivi\source\repos\zipprogram\unmolk.exe";
+            startInfo.Arguments = command;
+
+            Process proc = Process.Start(startInfo);
+
             ProgressWindow p = new ProgressWindow();
             p.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             p.Show();
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow?.ChangeView(new MainPage());
+        }
+
+        private void HomeButton_Click(object sender, RoutedEventArgs e)
+        {
             var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow?.ChangeView(new MainPage());
         }

@@ -29,7 +29,6 @@ namespace zipprogram
         }
         private void ButtonClicked(object sender, RoutedEventArgs e)
         {
-            
             try
             {
                 PopupMessage Msg = new PopupMessage();
@@ -54,28 +53,7 @@ namespace zipprogram
         {
             App.Current.Shutdown();
         }
-        private void MolkButton(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                PopupMessage Msg = new PopupMessage();
-                if (lbFiles.SelectedIndex != -1)
-                {
-                    ZipWindow p = new ZipWindow(lbFiles);
-                    //myFrameInCurrentWindow.Navigate(p);
-                    this.Content = p;
-                }
-                else
-                {
-                    Msg.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-                    Msg.Show();
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
+
         /*
         private void OpenFileButton(object sender, RoutedEventArgs e)
         {
@@ -99,7 +77,7 @@ namespace zipprogram
             if (openFileDialog.ShowDialog() == true)
             {
                 foreach (string filename in openFileDialog.FileNames)
-                    lbFiles.Items.Add(System.IO.Path.GetFileName(filename));
+                    lbFiles.Items.Add(System.IO.Path.GetFullPath(filename));
                 FilePath.Text = openFileDialog.FileName;
             }
         }
@@ -136,7 +114,7 @@ namespace zipprogram
         private void UnzipClick(object sender, RoutedEventArgs e)
         {
             var mainWindow = (MainWindow)Application.Current.MainWindow;
-            mainWindow?.ChangeView(new UnzipWindow());
+            mainWindow?.ChangeView(new UnzipWindow(lbFiles));
         }
     }
 

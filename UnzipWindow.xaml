@@ -64,7 +64,7 @@
                              Foreground="#FF080425"
                              FontSize="15"
                              Name="HomeButton"
-                        Click="HomeButton_Click"
+                             Click="HomeButton_Click"
                              FontWeight="Bold"
                              HorizontalAlignment="Center"
                              Margin="0,20,0,0">
@@ -180,7 +180,7 @@
                         <Button Grid.Row="0"
                             Height="50"
                             Margin="0,50,0,0"
-                            Click="OkButton_Click">
+                            Click="btnUnzip_Click">
                             <StackPanel Margin="5"
                                     Orientation="Horizontal">
                                 <TextBlock Text="OK" FontSize="30"

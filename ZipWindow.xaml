@@ -181,6 +181,7 @@
                             FontSize="20"
                             VerticalAlignment="Top" Margin="2,40,2,0"
                             Text="NewMap.molk"
+                            Name="newZipFolderName"
                         />
                         <Button Grid.Row="0"
                             Height="50"

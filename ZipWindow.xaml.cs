@@ -44,17 +44,15 @@ namespace zipprogram
                 sb.Append(item.ToString());
                 sb.Append(" ");
             }
-            MessageBox.Show(sb.ToString());
 
-            string command = "-v " + "Test10.molk " + sb.ToString();
-            MessageBox.Show(command);
+            string command = "-v " + newZipFolderName.Text + " " + sb.ToString();
 
             var startInfo = new ProcessStartInfo();
-            startInfo.WorkingDirectory = @"C:\Users\Olivi\source\repos";
+            startInfo.WorkingDirectory = folderLocationText.Text;
             startInfo.FileName = @"C:\Users\Olivi\source\repos\zipprogram\molk.exe";
-            //startInfo.Arguments = @"-v Test8.molk *.txt";
             startInfo.Arguments = command;
             Process proc = Process.Start(startInfo);
+
             ProgressWindow p = new ProgressWindow();
             p.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             p.Show();

@@ -38,11 +38,24 @@ namespace zipprogram
             }
         }
 
+        /*
+        private void OpenFileButton(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "All files (*.*)|*.*";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                PreviewBox.Text = System.IO.Path.GetFileName(openFileDialog.FileName);
+                FilePath.Text = openFileDialog.FileName;
+            }
+        }
+        */
+
         private void xButtonClick(object sender, RoutedEventArgs e)
         {
             App.Current.Shutdown();
-
         }
+
         private void OnMainWindowLoaded(object sender, RoutedEventArgs e)
         {
             ChangeView(new MainPage());
@@ -51,9 +64,6 @@ namespace zipprogram
         public void ChangeView(Page view)
         {
             MainFrame.NavigationService.Navigate(view);
-        }
-
-
-       
+        }  
     }
 }

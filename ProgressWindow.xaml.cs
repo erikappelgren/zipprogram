@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Text;
 using System.Threading;
 using System.Windows;
@@ -19,10 +20,11 @@ namespace zipprogram
     /// </summary>
     public partial class ProgressWindow : Window
     {
-        public ProgressWindow()
-        {
-            InitializeComponent();
+		public ProgressWindow()
+		{ 
+			InitializeComponent();
         }
+
 		private void Window_ContentRendered(object sender, EventArgs e)
 		{
 			BackgroundWorker worker = new BackgroundWorker();
@@ -53,4 +55,4 @@ namespace zipprogram
 			pbStatus.Value = e.ProgressPercentage;
 		}
 	}
-	}
+}
