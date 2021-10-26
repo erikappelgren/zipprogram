@@ -20,12 +20,19 @@ namespace zipprogram
     public partial class ZipWindow : Page
     {
         public ListBox lbFiles { get; set; }
-
         public ZipWindow(ListBox lbFiles)
         {
             this.lbFiles = lbFiles;
-
             InitializeComponent();
+        }
+
+        private void openFolderButton_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new Ookii.Dialogs.Wpf.VistaFolderBrowserDialog();
+            if (dialog.ShowDialog().GetValueOrDefault())
+            {
+                folderLocationText.Text = dialog.SelectedPath;
+            }
         }
 
         //zip selected files
@@ -42,14 +49,23 @@ namespace zipprogram
             string command = "-v " + "Test10.molk " + sb.ToString();
             MessageBox.Show(command);
 
-
             var startInfo = new ProcessStartInfo();
             startInfo.WorkingDirectory = @"C:\Users\Olivi\source\repos";
             startInfo.FileName = @"C:\Users\Olivi\source\repos\zipprogram\molk.exe";
             //startInfo.Arguments = @"-v Test8.molk *.txt";
             startInfo.Arguments = command;
             Process proc = Process.Start(startInfo);
+            ProgressWindow p = new ProgressWindow();
+            p.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            p.Show();
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow?.ChangeView(new MainPage());
+        }
 
+        private void HomeButton_Click(object sender, RoutedEventArgs e)
+        {
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow?.ChangeView(new MainPage());
         }
     }
 }
