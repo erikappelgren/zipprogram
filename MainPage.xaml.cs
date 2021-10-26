@@ -19,52 +19,51 @@ using System.Windows.Shapes;
 namespace zipprogram
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MainPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainPage : Page
     {
-        public MainWindow()
+        public MainPage()
         {
             InitializeComponent();
-            Application.Current.MainWindow = this;
-            Loaded += OnMainWindowLoaded;
         }
-        private void MolkButton(object sender, RoutedEventArgs e)
+        private void ButtonClicked(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                PopupMessage Msg = new PopupMessage();
-                if (lbFiles.SelectedIndex != -1 )
-                {
-                    ZipWindow p = new ZipWindow(lbFiles);
-                    //myFrameInCurrentWindow.Navigate(p);
-                    this.Content = p;
-                }
-                else
-                {
-                    Msg.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-                    Msg.Show();
-                }
-            }
-            catch (Exception)
-            {  
-                throw;
-            }
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow?.ChangeView(new ZipWindow(lbFiles));
         }
 
         private void xButtonClick(object sender, RoutedEventArgs e)
         {
-            App.Current.Shutdown();
-
-
-        private void OnMainWindowLoaded(object sender, RoutedEventArgs e)
-        {
-            ChangeView(new MainPage());
+            //Close();
         }
 
-        public void ChangeView(Page view)
+        /*
+        private void OpenFileButton(object sender, RoutedEventArgs e)
         {
-            MainFrame.NavigationService.Navigate(view);
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "All files (*.*)|*.*";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                PreviewBox.Text = System.IO.Path.GetFileName(openFileDialog.FileName);
+                FilePath.Text = openFileDialog.FileName;
+            }
+        }
+        */
+
+        //select the files to be zipped
+        private void btnOpenFile_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Multiselect = true;
+            openFileDialog.Filter = "All files (*.*)|*.*";
+            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            if (openFileDialog.ShowDialog() == true)
+            {
+                foreach (string filename in openFileDialog.FileNames)
+                    lbFiles.Items.Add(System.IO.Path.GetFileName(filename));
+                FilePath.Text = openFileDialog.FileName;
+            }
         }
 
 
@@ -78,7 +77,7 @@ namespace zipprogram
                 item.IsChecked = newVal;
             }
         }
-        
+
         private void cbFeature_CheckedChanged(object sender, RoutedEventArgs e)
         {
             cbAllFeatures.IsChecked = null;
@@ -96,19 +95,23 @@ namespace zipprogram
             }
         }
 
+        private void UnzipClick(object sender, RoutedEventArgs e)
+        {
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow?.ChangeView(new UnzipWindow());
+        }
     }
 
     public class File
     {
         public string Name { get; set; }
         public bool IsChecked { get; set; }
-        
+
         public File(string Name, bool IsChecked)
         {
             this.Name = Name;
             this.IsChecked = IsChecked;
-            
-        }
 
+        }
     }
 }

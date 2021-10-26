@@ -1,0 +1,17 @@
+﻿<Window x:Class="zipprogram.ProgressWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:zipprogram"
+        mc:Ignorable="d"
+        Background="#FF321759"
+        Title="ProgressWindow" Height="150" Width="350"
+        ContentRendered="Window_ContentRendered">
+    <Grid>
+        <StackPanel>
+            <Label Content="Zipping your files..." HorizontalAlignment="Center" FontSize="20" Margin="0,10,0,0" Foreground="LightCyan"></Label>
+        <ProgressBar Minimum="0" Maximum="100" Name="pbStatus" Margin="15,30,15,0" Height="20"/>
+        </StackPanel>
+    </Grid>
+</Window>
