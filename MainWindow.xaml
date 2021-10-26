@@ -8,8 +8,10 @@
         Title="MainWindow" Height="450" Width="800"
         
         Background="Transparent">
-
-    <Grid>
+    <Border Background="#FF321759"
+            CornerRadius="20" MouseDown="MouseDownOnWindow">
+        <Grid>
+           
         <Frame 
         Name="MainFrame"
         Background="Transparent"
