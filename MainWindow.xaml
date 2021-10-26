@@ -11,7 +11,7 @@
         AllowsTransparency="True"
         Background="Transparent">
     <Border Background="#FF321759"
-            CornerRadius="20">
+            CornerRadius="20" MouseDown="MouseDownOnWindow">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="120"/>
@@ -62,12 +62,12 @@
             <!--Left side menu buttons-->
             <StackPanel Grid.Row="1">
                 <Button Content="Home"
-                             Height="50"
-                             Foreground="#FF080425"
-                             FontSize="15"
-                             FontWeight="Bold"
-                             HorizontalAlignment="Center"
-                             Margin="0,20,0,0">
+                        Height="50"
+                        Foreground="#FF080425"
+                        FontSize="15"
+                        FontWeight="Bold"
+                        HorizontalAlignment="Center"
+                        Margin="0,20,0,0">
                     <!--Left side button style-->
                     <Button.Style>
                         <Style TargetType="Button">
@@ -152,6 +152,7 @@
                     </Button.Template>
                 </Button>
             </StackPanel>
+            
             <!--Center window-->
             <Grid Grid.Row="2" Grid.Column="2">
                 <Grid.ColumnDefinitions>
@@ -183,7 +184,7 @@
                         <Button
                             HorizontalAlignment="Right"
                             Content="Open File"
-                            Click="OpenFileButton"
+                            Click="btnOpenFile_Click"
                             Height="30"
                             Width="90" 
                             VerticalAlignment="Bottom">
@@ -207,10 +208,12 @@
                 <!--Checkbox row-->
                 <Grid
                     Grid.Row="1">
-                    <CheckBox
-                        Margin="20,10,0,0">
+                    <CheckBox Margin="20,10,0,0" 
+                              Name="cbAllFeatures"
+                              Checked="cbAllFeatures_CheckedChanged"
+                              Unchecked="cbAllFeatures_CheckedChanged">
                         <TextBlock>
-				        <Run Foreground="White" FontWeight="Bold">Select All</Run>
+				        <Run Foreground="White" FontWeight="Bold" Text="Select All"></Run>
                         </TextBlock>
                     </CheckBox>
                 </Grid>
@@ -224,12 +227,27 @@
                         <Grid
                     Grid.Row="2"
                     Grid.Column="1">
-                            <TextBox
+                            <ListBox
+                                x:Name="lbFiles"
+                                SelectionMode="Multiple"
+                                BorderThickness="1"
+                                Padding="10"
+                                Tag ="CoasterId">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <CheckBox Content="{Binding .}" Tag="{Binding CoasterId}" 
+                                                    IsChecked="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}}, 
+                                                        Path=IsSelected}" />
+                                        <!--<CheckBox Content="{Binding .}" IsChecked="false" Checked="cbFeature_CheckedChanged" Unchecked="cbFeature_CheckedChanged" />-->
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                            <!--<TextBox
                         Name="PreviewBox"
                         BorderThickness="1"
                         Padding="10"
                         TextWrapping="Wrap">
-                            </TextBox>
+                            </TextBox>-->
                         </Grid>
                     </ScrollViewer>
                 </Grid>
@@ -249,7 +267,7 @@
 
                         <Button Grid.Row="0"
                             Height="50"
-                            Margin="5">
+                            Margin="5" Click="MolkButton">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Height="15"
                                            Margin="10,0,10,0"
@@ -316,11 +334,7 @@
                             </Button.Template>
                         </Button>
                     </Grid>
-
-
                 </Grid>
-
-
             </Grid>
         </Grid>
     </Border>
