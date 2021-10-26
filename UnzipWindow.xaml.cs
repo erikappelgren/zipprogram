@@ -45,11 +45,11 @@ namespace zipprogram
                 sb.Append(" ");
             }
 
-            string command = "-v " + sb.ToString() + " " + "-d " + folderLocationText.Text;
+            string command = "-j " + sb.ToString() + "-d " + folderLocationText.Text;
             MessageBox.Show(command);
 
             var startInfo = new ProcessStartInfo();
-            startInfo.WorkingDirectory = folderLocationText.Text;
+            //startInfo.WorkingDirectory = folderLocationText.Text;
             startInfo.FileName = @"C:\Users\Olivi\source\repos\zipprogram\unmolk.exe";
             startInfo.Arguments = command;
 

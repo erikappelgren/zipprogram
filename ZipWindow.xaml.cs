@@ -46,13 +46,6 @@ namespace zipprogram
         //zip selected files
         private void btnZip_Click(object sender, RoutedEventArgs e)
         {
-            //ProgressBar pbStatus = new ProgressBar();
-            //pbStatus.Visibility = Visibility.Visible;
-            //pbStatus.IsIndeterminate = true;
-
-            //pbStatus.Visibility = Visibility.Visible;
-            //pbStatus.IsIndeterminate = true;
-
             StringBuilder sb = new StringBuilder();
             foreach (object item in lbFiles.SelectedItems)
             {
@@ -67,10 +60,6 @@ namespace zipprogram
             startInfo.FileName = @"C:\Users\Olivi\source\repos\zipprogram\molk.exe";
             startInfo.Arguments = command;
             Process proc = Process.Start(startInfo);
-
-            //pbStatus.Visibility = Visibility.Collapsed;
-            //proc.StandardOutput.ReadToEnd();
-
         }
     }
 }
