@@ -177,6 +177,8 @@
                         Margin="20,20,0,0">
                         <TextBox
                             Name="FilePath" 
+                            FontSize="15px"
+                            Padding="0,3,0,0"
                             HorizontalAlignment="Stretch">
                         </TextBox>
                     </Grid>
