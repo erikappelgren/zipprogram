@@ -49,7 +49,7 @@ namespace zipprogram
 
             var startInfo = new ProcessStartInfo();
             //startInfo.WorkingDirectory = folderLocationText.Text;
-            startInfo.FileName = @"C:\Users\erika\OneDrive\Dokument\molk.exe";
+            startInfo.FileName = @"C:\Users\erika\OneDrive\Dokument\unmolk.exe";
             startInfo.Arguments = command;
 
             Process proc = Process.Start(startInfo);
