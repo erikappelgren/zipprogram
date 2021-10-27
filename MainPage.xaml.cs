@@ -78,15 +78,14 @@ namespace zipprogram
             //openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             //if (openFileDialog.ShowDialog() == true)
             //{
-            //    foreach (string filename in openFileDialog.FileNames)
-            //        lbFiles.Items.Add(System.IO.Path.GetFullPath(filename));
-            //    FilePath.Text = openFileDialog.FileName;
+            //    foreach (string filename in openFileDialog.FileNames);
             //}
+
             var dialog = new Ookii.Dialogs.Wpf.VistaFolderBrowserDialog();
             if (dialog.ShowDialog().GetValueOrDefault())
             {
                 string[] fileArray = Directory.GetFiles(dialog.SelectedPath);
-                foreach(string s in fileArray)
+                foreach (string s in fileArray)
                 {
                     lbFiles.Items.Add(System.IO.Path.GetFullPath(s));
                     FilePath.Text = dialog.SelectedPath;
@@ -143,6 +142,13 @@ namespace zipprogram
             {
                 throw;
             }
+        }
+
+        private void MouseWheelScroll(object sender, MouseWheelEventArgs e)
+        {
+            ScrollViewer scv = (ScrollViewer)sender;
+            scv.ScrollToVerticalOffset(scv.VerticalOffset - e.Delta);
+            e.Handled = true;
         }
     }
 
