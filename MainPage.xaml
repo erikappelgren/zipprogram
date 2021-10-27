@@ -33,7 +33,7 @@
 
     </Page.Resources>
 
-    <Border Background="#FF321759">
+    <Border >
 
         <Grid Background="#FF321759">
 
@@ -64,13 +64,167 @@
                       ScrollViewer.HorizontalScrollBarVisibility="Disabled">
 
                     <ListViewItem HorizontalAlignment="Left"
+                                  Margin="0,80,0,0">
+
+                        <StackPanel Orientation="Horizontal">
+                            <Button Click="HomeButton_Click">
+
+                                <Image Source="img/home.png"
+                                   Stretch="Fill"
+                                   HorizontalAlignment="Center"
+                                   Height="40"
+                                   Width="40"
+                                   Margin="3,0,0,0">
+                                </Image>
+
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Background" Value="Transparent"/>
+                                        <Setter Property="BorderThickness" Value="0"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="Transparent"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Width="40" Height="40" 
+                                    CornerRadius="12"
+                                    Background="{TemplateBinding Background}">
+                                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+
+                            </Button>
+                        </StackPanel>
+
+                        <ListViewItem.ToolTip>
+                            <ToolTip x:Name="ToolTipHome"
+                                 Content="Home"
+                                 Style="{StaticResource ToolTipStyle}">
+
+                            </ToolTip>
+                        </ListViewItem.ToolTip>
+                    </ListViewItem>
+
+                    <ListViewItem HorizontalAlignment="Left"
+                                  Margin="0,20,0,0">
+
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="img/tool.png"
+                                   Stretch="Fill"
+                                   HorizontalAlignment="Center"
+                                   Height="40"
+                                   Width="45">
+                            </Image>
+                            <Button>
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Background" Value="Transparent"/>
+                                        <Setter Property="BorderThickness" Value="0"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="Transparent"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Width="100" Height="40" 
+                                    CornerRadius="12"
+                                    Background="{TemplateBinding Background}">
+                                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                        </StackPanel>
+
+                        <ListViewItem.ToolTip>
+                            <ToolTip x:Name="ToolTipTool"
+                                     Content="Tool"
+                                     Style="{StaticResource ToolTipStyle}">
+
+                            </ToolTip>
+                        </ListViewItem.ToolTip>
+
+                    </ListViewItem>
+
+                    <ListViewItem HorizontalAlignment="Left"
+                                  Margin="4,200,0,0">
+
+                        <StackPanel Orientation="Horizontal">
+
+                            <Button>
+
+                                <Image Source="img/help.png"
+                                       Stretch="Fill"
+                                       HorizontalAlignment="Center"
+                                       Height="40"
+                                       Width="40">
+                                </Image>
+
+                                <Button.Style>
+                                    <Style TargetType="Button">
+
+                                        <Setter Property="Background" Value="Transparent"/>
+                                        <Setter Property="BorderThickness" Value="0"/>
+
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="Transparent"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Width="40" Height="40" 
+                                    CornerRadius="12"
+                                    Background="{TemplateBinding Background}">
+                                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+
+                            </Button>
+                        </StackPanel>
+
+                        <ListViewItem.ToolTip>
+                            <ToolTip x:Name="ToolTipHelp"
+                                 Content="Help"
+                                 Style="{StaticResource ToolTipStyle}">
+
+                            </ToolTip>
+                        </ListViewItem.ToolTip>
+
+                    </ListViewItem>
+
+                </ListView>
+
+                <!--<ListView x:Name="ListView"
+                      Background="Transparent"
+                      BorderBrush="Transparent"
+                      ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+
+                    <ListViewItem HorizontalAlignment="Left"
                               Margin="0,80,0,0">
 
                         <StackPanel Orientation="Horizontal">
                             <Image Source="img/home.png"
-                               Stretch="None"
-                               HorizontalAlignment="Center"
-                               Margin="-3">
+                                   Stretch="Fill"
+                                   HorizontalAlignment="Center"
+                                   Height="40"
+                                   Width="40"
+                                   Margin="3,0,0,0">
                             </Image>
                         </StackPanel>
 
@@ -90,10 +244,11 @@
                         <StackPanel Orientation="Horizontal"
                                 Height="50">
                             <Image Source="img/tool.png"
-                               Stretch="Fill"
-                               HorizontalAlignment="Center"
-                               Margin="-8"
-                               Height="50">
+                                   Stretch="Fill"
+                                   HorizontalAlignment="Center"
+                                   Margin="-2,0,0,0"
+                                   Height="40"
+                                   Width="45">
                             </Image>
                         </StackPanel>
 
@@ -127,7 +282,7 @@
 
                     </ListViewItem>
 
-                </ListView>
+                </ListView>-->
 
             </Grid>
 
@@ -269,8 +424,8 @@
                                 </ControlTemplate>
                             </Button.Template>
                         </Button>
-
                     </Grid>
+                    
                     <Grid Grid.Row="2"
                           Grid.Column="1">
 
@@ -358,6 +513,7 @@
                         </Grid>
                     </Grid>
                 </Grid>
+
             </Grid>
         </Grid>
     </Border>
