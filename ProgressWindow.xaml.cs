@@ -35,6 +35,14 @@ namespace zipprogram
 			worker.RunWorkerAsync();
 		}
 
+		public void ZipOrUnzip(int choice)
+        {
+			if(choice == 1)
+            {
+				Zipping.Content = "Unzipping your files...";
+            }
+
+        }
 		void worker_DoWork(object sender, DoWorkEventArgs e)
 		{
 			for (int i = 0; i < 101; i++)

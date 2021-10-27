@@ -52,13 +52,14 @@ namespace zipprogram
 
         private void xButtonClick(object sender, RoutedEventArgs e)
         {
-            App.Current.Shutdown();
+            ExitConfirmation exit = new ExitConfirmation();
+            exit.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            exit.Show();
         }
 
         //select the files to be zipped
         private void btnOpenFile_Click(object sender, RoutedEventArgs e)
         {
-
             //var dialog = new Ookii.Dialogs.Wpf.VistaFolderBrowserDialog();
             //if (dialog.ShowDialog().GetValueOrDefault())
             //{

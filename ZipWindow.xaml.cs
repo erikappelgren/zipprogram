@@ -34,6 +34,7 @@ namespace zipprogram
                 folderLocationText.Text = dialog.SelectedPath;
                 
             }
+            
         }
 
         //zip selected files
@@ -50,12 +51,13 @@ namespace zipprogram
 
             var startInfo = new ProcessStartInfo();
             startInfo.WorkingDirectory = folderLocationText.Text;
-            startInfo.FileName = @"C:\Users\Olivi\source\repos\zipprogram\molk.exe";
+            startInfo.FileName = @"C:\Users\olivi\source\repos\zipprogram\molk.exe";
             startInfo.Arguments = command;
             Process proc = Process.Start(startInfo);
 
             ProgressWindow p = new ProgressWindow();
             p.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
             p.Show();
             var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow?.ChangeView(new MainPage());
@@ -65,6 +67,13 @@ namespace zipprogram
         {
             var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow?.ChangeView(new MainPage());
+        }
+
+        private void xButton_Click(object sender, RoutedEventArgs e)
+        {
+            ExitConfirmation exit = new ExitConfirmation();
+            exit.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            exit.Show();
         }
     }
 }

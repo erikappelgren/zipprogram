@@ -33,6 +33,7 @@
                     Margin="0,0,15,0"
                     HorizontalAlignment="Right"
                     Grid.Column="2"
+                    Click="xButton_Click"
                     Width="25">
                 <Image Source="img/x-icon.png"></Image>
                 <!--Close button style-->
