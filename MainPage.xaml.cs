@@ -59,27 +59,27 @@ namespace zipprogram
         private void btnOpenFile_Click(object sender, RoutedEventArgs e)
         {
 
-            var dialog = new Ookii.Dialogs.Wpf.VistaFolderBrowserDialog();
-            if (dialog.ShowDialog().GetValueOrDefault())
-            {
-                string[] fileArray = Directory.GetFiles(dialog.SelectedPath);
-                foreach (string s in fileArray)
-                {
-                    lbFiles.Items.Add(System.IO.Path.GetFullPath(s));
-                    FilePath.Text = dialog.SelectedPath;
-                }
-            }
-
-            //OpenFileDialog openFileDialog = new OpenFileDialog();
-            //openFileDialog.Multiselect = true;
-            //openFileDialog.Filter = "All files (*.*)|*.*";
-            //openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            //if (openFileDialog.ShowDialog() == true)
+            //var dialog = new Ookii.Dialogs.Wpf.VistaFolderBrowserDialog();
+            //if (dialog.ShowDialog().GetValueOrDefault())
             //{
-            //    foreach (string filename in openFileDialog.FileNames)
-            //        lbFiles.Items.Add(System.IO.Path.GetFullPath(filename));
-            //    FilePath.Text = openFileDialog.FileName;
+            //    string[] fileArray = Directory.GetFiles(dialog.SelectedPath);
+            //    foreach (string s in fileArray)
+            //    {
+            //        lbFiles.Items.Add(System.IO.Path.GetFullPath(s));
+            //        FilePath.Text = dialog.SelectedPath;
+            //    }
             //}
+
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Multiselect = true;
+            openFileDialog.Filter = "All files (*.*)|*.*";
+            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            if (openFileDialog.ShowDialog() == true)
+            {
+                foreach (string filename in openFileDialog.FileNames)
+                    lbFiles.Items.Add(System.IO.Path.GetFullPath(filename));
+                FilePath.Text = openFileDialog.FileName;
+            }
         }
 
         

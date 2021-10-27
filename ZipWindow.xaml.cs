@@ -46,7 +46,7 @@ namespace zipprogram
                 sb.Append(" ");
             }
 
-            string command = "-v " + newZipFolderName.Text + " " + sb.ToString();
+            string command = "-v " + newZipFolderName.Text + ".molk " + sb.ToString();
 
             var startInfo = new ProcessStartInfo();
             startInfo.WorkingDirectory = folderLocationText.Text;
