@@ -160,6 +160,35 @@ namespace zipprogram
         }
 
 
+        private void Delete_Button(object sender, EventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (object i in lbFiles.SelectedItems)
+            {
+                sb.Append(i.ToString());
+                sb.Append(" ");
+            }
+            string[] items = sb.ToString().Split(" ");
+
+            if (items[0] != "")
+            {
+                if (MessageBox.Show("Are you sure you want to delete the selected files?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    for (int i = 0; i < items.Length; i++)
+                    {
+                        lbFiles.Items.Remove(items[i]);
+                    }
+                }
+                else {}
+            }
+            else
+            {
+                MessageBox.Show("Please Select a File to delete");
+            }
+            cbAllFeatures.IsChecked = false;
+        }
+
+
         private void MouseWheelScroll(object sender, MouseWheelEventArgs e)
         {
             ScrollViewer scv = (ScrollViewer)sender;
@@ -171,6 +200,13 @@ namespace zipprogram
         {
             var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow?.ChangeView(new MainPage());
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+
 }
         private void btnOpenFolder_Click(object sender, RoutedEventArgs e)
         {
@@ -185,6 +221,7 @@ namespace zipprogram
                     FilePath.Text = dialog.SelectedPath;
                 }
             }
+
         }
     }
 

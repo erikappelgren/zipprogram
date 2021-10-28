@@ -50,7 +50,7 @@ namespace zipprogram
             var startInfo = new ProcessStartInfo();
             //startInfo.WorkingDirectory = folderLocationText.Text;
 
-            startInfo.FileName = @"C:\Users\olivi\source\repos\zipprogram\molk.exe";
+            startInfo.FileName = @"C:\Users\Olivi\source\repos\zipprogram\unmolk.exe";
 
             startInfo.Arguments = command;
 
