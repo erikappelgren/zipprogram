@@ -32,6 +32,7 @@ namespace zipprogram
             if (dialog.ShowDialog().GetValueOrDefault())
             {
                 folderLocationText.Text = dialog.SelectedPath;
+                
             }
             
         }
@@ -46,11 +47,11 @@ namespace zipprogram
                 sb.Append(" ");
             }
 
-            string command = "-v " + newZipFolderName.Text + " " + sb.ToString();
+            string command = "-v " + newZipFolderName.Text + ".molk " + sb.ToString();
 
             var startInfo = new ProcessStartInfo();
             startInfo.WorkingDirectory = folderLocationText.Text;
-            startInfo.FileName = @"C:\Users\erika\OneDrive\Dokument\molk.exe";
+            startInfo.FileName = @"C:\Users\olivi\source\repos\zipprogram\molk.exe";
             startInfo.Arguments = command;
             Process proc = Process.Start(startInfo);
 

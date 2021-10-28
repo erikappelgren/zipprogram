@@ -27,6 +27,7 @@ namespace zipprogram
         {
             InitializeComponent();
         }
+
         private void ButtonClicked(object sender, RoutedEventArgs e)
         {
             try
@@ -56,22 +57,20 @@ namespace zipprogram
             exit.Show();
         }
 
-        /*
-        private void OpenFileButton(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "All files (*.*)|*.*";
-            if (openFileDialog.ShowDialog() == true)
-            {
-                PreviewBox.Text = System.IO.Path.GetFileName(openFileDialog.FileName);
-                FilePath.Text = openFileDialog.FileName;
-            }
-        }
-        */
-
         //select the files to be zipped
         private void btnOpenFile_Click(object sender, RoutedEventArgs e)
         {
+            //var dialog = new Ookii.Dialogs.Wpf.VistaFolderBrowserDialog();
+            //if (dialog.ShowDialog().GetValueOrDefault())
+            //{
+            //    string[] fileArray = Directory.GetFiles(dialog.SelectedPath);
+            //    foreach (string s in fileArray)
+            //    {
+            //        lbFiles.Items.Add(System.IO.Path.GetFullPath(s));
+            //        FilePath.Text = dialog.SelectedPath;
+            //    }
+            //}
+
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Multiselect = true;
             openFileDialog.Filter = "All files (*.*)|*.*";
@@ -82,36 +81,59 @@ namespace zipprogram
                     lbFiles.Items.Add(System.IO.Path.GetFullPath(filename));
                 FilePath.Text = openFileDialog.FileName;
             }
-
         }
 
-
+        
         private void cbAllFeatures_CheckedChanged(object sender, RoutedEventArgs e)
         {
             bool newVal = (cbAllFeatures.IsChecked == true);
 
-            for (int i = 0; i < lbFiles.Items.Count; i++)
+            foreach (var item in lbFiles.Items)
             {
-                CheckBox item = lbFiles.Items[i] as CheckBox;
-                item.IsChecked = newVal;
+                ListBoxItem lbi = lbFiles.ItemContainerGenerator.ContainerFromItem(item) as ListBoxItem;
+                CheckBox cb = FindVisualChild<CheckBox>(lbi);
+                if (cb != null)
+                    cb.IsChecked = newVal;
             }
+
+        }
+
+        public static T FindVisualChild<T>(DependencyObject obj) where T : DependencyObject
+        {
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(obj); i++)
+            {
+                DependencyObject child = VisualTreeHelper.GetChild(obj, i);
+                if (child != null && child is T)
+                    return (T)child;
+                else
+                {
+                    T childOfChild = FindVisualChild<T>(child);
+                    if (childOfChild != null)
+                        return childOfChild;
+                }
+            }
+            return null;
         }
 
         private void cbFeature_CheckedChanged(object sender, RoutedEventArgs e)
         {
             cbAllFeatures.IsChecked = null;
+            bool allIsChecked = true;
 
-            foreach (CheckBox item in lbFiles.Items)
+            foreach (var item in lbFiles.Items)
             {
-                if ((item.IsChecked == true))
+                ListBoxItem lbi = lbFiles.ItemContainerGenerator.ContainerFromItem(item) as ListBoxItem;
+                CheckBox cb = FindVisualChild<CheckBox>(lbi);
+                if (cb.IsChecked == true && allIsChecked == true)
                 {
-                    cbAllFeatures.IsChecked = true;
+                    allIsChecked = true;
                 }
-                else if ((item.IsChecked == false))
+                else
                 {
-                    cbAllFeatures.IsChecked = false;
+                    allIsChecked = false;
                 }
             }
+            cbAllFeatures.IsChecked = allIsChecked;
         }
 
         private void UnzipClick(object sender, RoutedEventArgs e)
