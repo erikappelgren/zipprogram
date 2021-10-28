@@ -7,7 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="img\help.png" />
+    <None Remove="img\home.png" />
     <None Remove="img\logo.png" />
+    <None Remove="img\tool.png" />
     <None Remove="img\UnZip.Icon.png" />
     <None Remove="img\x-icon.png" />
     <None Remove="img\Zip.Icon.png" />
@@ -15,7 +18,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="img\help.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\home.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="img\logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\tool.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="img\UnZip.Icon.png">

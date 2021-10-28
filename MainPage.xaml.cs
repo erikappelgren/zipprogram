@@ -86,6 +86,7 @@ namespace zipprogram
         
         private void cbAllFeatures_CheckedChanged(object sender, RoutedEventArgs e)
         {
+
             bool newVal = (cbAllFeatures.IsChecked == true);
 
             foreach (var item in lbFiles.Items)
@@ -158,6 +159,19 @@ namespace zipprogram
             }
         }
 
+
+        private void MouseWheelScroll(object sender, MouseWheelEventArgs e)
+        {
+            ScrollViewer scv = (ScrollViewer)sender;
+            scv.ScrollToVerticalOffset(scv.VerticalOffset - e.Delta);
+            e.Handled = true;
+        }
+
+        private void HomeButton_Click(object sender, RoutedEventArgs e)
+        {
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow?.ChangeView(new MainPage());
+}
         private void btnOpenFolder_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new Ookii.Dialogs.Wpf.VistaFolderBrowserDialog();

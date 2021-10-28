@@ -69,7 +69,7 @@ namespace zipprogram
             mainWindow?.ChangeView(new MainPage());
         }
 
-        private void xButton_Click(object sender, RoutedEventArgs e)
+        private void xButtonClick(object sender, RoutedEventArgs e)
         {
             ExitConfirmation exit = new ExitConfirmation();
             exit.WindowStartupLocation = WindowStartupLocation.CenterScreen;
