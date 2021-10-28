@@ -95,6 +95,7 @@ namespace zipprogram
                 if (cb != null)
                     cb.IsChecked = newVal;
             }
+
         }
 
         public static T FindVisualChild<T>(DependencyObject obj) where T : DependencyObject
@@ -154,6 +155,21 @@ namespace zipprogram
             catch (Exception)
             {
                 throw;
+            }
+        }
+
+        private void btnOpenFolder_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new Ookii.Dialogs.Wpf.VistaFolderBrowserDialog();
+            var d = new Ookii.Dialogs.Wpf.VistaOpenFileDialog();
+            if (dialog.ShowDialog().GetValueOrDefault())
+            {
+                string[] fileArray = Directory.GetFiles(dialog.SelectedPath);
+                foreach (string s in fileArray)
+                {
+                    lbFiles.Items.Add(System.IO.Path.GetFullPath(s));
+                    FilePath.Text = dialog.SelectedPath;
+                }
             }
         }
     }

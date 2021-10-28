@@ -10,7 +10,7 @@
 
     <Border Background="#FF321759"
             CornerRadius="20">
-        
+
         <Grid>
 
             <Grid.ColumnDefinitions>
@@ -188,6 +188,27 @@
                             Height="30"
                             Width="90" 
                             VerticalAlignment="Bottom">
+                            <!--Open file button style-->
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="LightCyan"/>
+                                    <Setter Property="BorderThickness" Value="0" />
+                                    <Setter Property="HorizontalAlignment" Value="Left" />
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="LightCyan"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                        <Button
+                            HorizontalAlignment="Right"
+                            Content="Open Folder"
+                            Click="btnOpenFolder_Click"
+                            Height="30"
+                            Width="90" 
+                            VerticalAlignment="Bottom" Margin="0,0,-95,0">
                             <!--Open file button style-->
                             <Button.Style>
                                 <Style TargetType="Button">
