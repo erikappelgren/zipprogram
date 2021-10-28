@@ -49,7 +49,9 @@ namespace zipprogram
 
             var startInfo = new ProcessStartInfo();
             //startInfo.WorkingDirectory = folderLocationText.Text;
+
             startInfo.FileName = @"C:\Users\Olivi\source\repos\zipprogram\unmolk.exe";
+
             startInfo.Arguments = command;
 
             Process proc = Process.Start(startInfo);
@@ -68,7 +70,7 @@ namespace zipprogram
             mainWindow?.ChangeView(new MainPage());
         }
 
-        private void xButton_Click(object sender, RoutedEventArgs e)
+        private void xButtonClick(object sender, RoutedEventArgs e)
         {
             ExitConfirmation exit = new ExitConfirmation();
             exit.WindowStartupLocation = WindowStartupLocation.CenterScreen;

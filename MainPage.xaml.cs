@@ -86,6 +86,7 @@ namespace zipprogram
         
         private void cbAllFeatures_CheckedChanged(object sender, RoutedEventArgs e)
         {
+
             bool newVal = (cbAllFeatures.IsChecked == true);
 
             foreach (var item in lbFiles.Items)
@@ -95,6 +96,7 @@ namespace zipprogram
                 if (cb != null)
                     cb.IsChecked = newVal;
             }
+
         }
 
         public static T FindVisualChild<T>(DependencyObject obj) where T : DependencyObject
@@ -157,6 +159,7 @@ namespace zipprogram
             }
         }
 
+
         private void Delete_Button(object sender, EventArgs e)
         {
             StringBuilder sb = new StringBuilder();
@@ -185,6 +188,7 @@ namespace zipprogram
             cbAllFeatures.IsChecked = false;
         }
 
+
         private void MouseWheelScroll(object sender, MouseWheelEventArgs e)
         {
             ScrollViewer scv = (ScrollViewer)sender;
@@ -196,10 +200,27 @@ namespace zipprogram
         {
             var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow?.ChangeView(new MainPage());
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+
+
+}
+        private void btnOpenFolder_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new Ookii.Dialogs.Wpf.VistaFolderBrowserDialog();
+            var d = new Ookii.Dialogs.Wpf.VistaOpenFileDialog();
+            if (dialog.ShowDialog().GetValueOrDefault())
+            {
+                string[] fileArray = Directory.GetFiles(dialog.SelectedPath);
+                foreach (string s in fileArray)
+                {
+                    lbFiles.Items.Add(System.IO.Path.GetFullPath(s));
+                    FilePath.Text = dialog.SelectedPath;
+                }
+            }
 
         }
     }
