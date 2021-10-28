@@ -346,7 +346,7 @@
                 </Grid.ColumnDefinitions>
                 <StackPanel>
                     <Grid Grid.Column="0"
-                        Margin="80,0,0,0">
+                        Margin="80,80,0,0">
                         <Label FontSize="20" Foreground="White" Content="Files Location:" Margin="2,40,2,0"/>
                         <StackPanel>
                             <TextBox
@@ -365,7 +365,8 @@
                         
                         <Button Grid.Row="0"
                             Height="50"
-                            Margin="0,50,0,0"
+                                HorizontalAlignment="Center"
+                            Margin="25,50,0,0"
                             Click="btnUnzip_Click">
                             <StackPanel Margin="5"
                                     Orientation="Horizontal">

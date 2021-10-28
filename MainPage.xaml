@@ -32,7 +32,7 @@
 
     </Page.Resources>
 
-    <Border >
+    <Grid >
 
         <Grid Background="#FF321759">
 
@@ -214,82 +214,7 @@
 
                 </ListView>
 
-                <!--<ListView x:Name="ListView"
-                      Background="Transparent"
-                      BorderBrush="Transparent"
-                      ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                      ScrollViewer.HorizontalScrollBarVisibility="Disabled">
 
-                    <ListViewItem HorizontalAlignment="Left"
-                              Margin="0,80,0,0">
-
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="img/home.png"
-                                   Stretch="Fill"
-                                   HorizontalAlignment="Center"
-                                   Height="40"
-                                   Width="40"
-                                   Margin="3,0,0,0">
-                            </Image>
-                        </StackPanel>
-
-                        <ListViewItem.ToolTip>
-                            <ToolTip x:Name="ToolTipHome"
-                                 Content="Home"
-                                 Style="{StaticResource ToolTipStyle}">
-
-                            </ToolTip>
-                        </ListViewItem.ToolTip>
-
-                    </ListViewItem>
-
-                    <ListViewItem HorizontalAlignment="Left"
-                              Margin="0,20,0,0">
-
-                        <StackPanel Orientation="Horizontal"
-                                Height="50">
-                            <Image Source="img/tool.png"
-                                   Stretch="Fill"
-                                   HorizontalAlignment="Center"
-                                   Margin="-2,0,0,0"
-                                   Height="40"
-                                   Width="45">
-                            </Image>
-                        </StackPanel>
-
-                        <ListViewItem.ToolTip>
-                            <ToolTip x:Name="ToolTipTool"
-                                 Content="Tool"
-                                 Style="{StaticResource ToolTipStyle}">
-
-
-                            </ToolTip>
-                        </ListViewItem.ToolTip>
-
-                    </ListViewItem>
-
-                    <ListViewItem HorizontalAlignment="Left"
-
-                              Margin="4,200,0,0">
-
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="img/help.png"
-                               Stretch="None"
-                               HorizontalAlignment="Center">
-                            </Image>
-                        </StackPanel>
-
-                        <ListViewItem.ToolTip>
-                            <ToolTip x:Name="ToolTipHelp"
-                                 Content="Help"
-                                 Style="{StaticResource ToolTipStyle}">
-
-                            </ToolTip>
-                        </ListViewItem.ToolTip>
-
-                    </ListViewItem>
-
-                </ListView>-->
 
             </Grid>
 
@@ -333,6 +258,27 @@
                             Height="30"
                             Width="90" 
                             VerticalAlignment="Bottom">
+                                <!--Open file button style-->
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Background" Value="LightCyan"/>
+                                        <Setter Property="BorderThickness" Value="0" />
+                                        <Setter Property="HorizontalAlignment" Value="Left" />
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="LightCyan"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+                            <Button
+                            HorizontalAlignment="Right"
+                            Content="Open Folder"
+                            Click="btnOpenFolder_Click"
+                            Height="30"
+                            Width="90" 
+                            VerticalAlignment="Bottom" Margin="0,0,-100,0">
                                 <!--Open file button style-->
                                 <Button.Style>
                                     <Style TargetType="Button">
@@ -430,327 +376,136 @@
                                 </ControlTemplate>
                             </Button.Template>
                         </Button>
-                    </StackPanel>
+                    </Grid>
+                </Grid>
 
-                    <ListViewItem.ToolTip>
-                        <ToolTip x:Name="ToolTipHelp"
-                                Content="Help"
-                                Style="{StaticResource ToolTipStyle}">
 
-                        </ToolTip>
-                    </ListViewItem.ToolTip>
 
-                    </ListViewItem>
 
-                </ListView>
-
-                <!--<ListView x:Name="ListView"
-                      Background="Transparent"
-                      BorderBrush="Transparent"
-                      ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                      ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-
-                    <ListViewItem HorizontalAlignment="Left"
-                              Margin="0,80,0,0">
-
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="img/home.png"
-                                   Stretch="Fill"
-                                   HorizontalAlignment="Center"
-                                   Height="40"
-                                   Width="40"
-                                   Margin="3,0,0,0">
-                            </Image>
-                        </StackPanel>
-
-                        <ListViewItem.ToolTip>
-                            <ToolTip x:Name="ToolTipHome"
-                                 Content="Home"
-                                 Style="{StaticResource ToolTipStyle}">
-
-                            </ToolTip>
-                        </ListViewItem.ToolTip>
-
-                    </ListViewItem>
-
-                    <ListViewItem HorizontalAlignment="Left"
-                              Margin="0,20,0,0">
-
-                        <StackPanel Orientation="Horizontal"
-                                Height="50">
-                            <Image Source="img/tool.png"
-                                   Stretch="Fill"
-                                   HorizontalAlignment="Center"
-                                   Margin="-2,0,0,0"
-                                   Height="40"
-                                   Width="45">
-                            </Image>
-                        </StackPanel>
-
-                        <ListViewItem.ToolTip>
-                            <ToolTip x:Name="ToolTipTool"
-                                 Content="Tool"
-                                 Style="{StaticResource ToolTipStyle}">
-
-                            </ToolTip>
-                        </ListViewItem.ToolTip>
-
-                    </ListViewItem>
-
-                    <ListViewItem HorizontalAlignment="Left"
-                              Margin="4,200,0,0">
-
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="img/help.png"
-                               Stretch="None"
-                               HorizontalAlignment="Center">
-                            </Image>
-                        </StackPanel>
-
-                        <ListViewItem.ToolTip>
-                            <ToolTip x:Name="ToolTipHelp"
-                                 Content="Help"
-                                 Style="{StaticResource ToolTipStyle}">
-
-                            </ToolTip>
-                        </ListViewItem.ToolTip>
-
-                    </ListViewItem>
-
-                </ListView>-->
-
-            </Grid>
-
-            <Grid Name="window"
+                <Grid
                   Grid.Column="1"
                   Margin="0,0,0,0">
 
-                <!--Center window-->
-                <Grid Grid.Row="2" Grid.Column="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="3*"/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-
-                    <!--Open file row-->
-                    <Grid Grid.Row="0" Grid.Column="0">
+                    <!--Center window-->
+                    <Grid Grid.Row="2" Grid.Column="2">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="3*"/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
 
-                        <Grid Grid.Column="0"
-                              Margin="180,50,0,0">
-                            <TextBox
-                                Height="30"
-                                Name="FilePath" 
-                                FontSize="15px"
-                                Padding="0,3,0,0"
-                                HorizontalAlignment="Stretch">
-                            </TextBox>
-                        </Grid>
-                        <Grid Grid.Column="1">
-                            <Button
-                            HorizontalAlignment="Right"
-                            Content="Open File"
-                            Click="btnOpenFile_Click"
-                            Height="30"
-                            Width="90" 
-                            VerticalAlignment="Bottom">
-                                <!--Open file button style-->
-                                <Button.Style>
-                                    <Style TargetType="Button">
-                                        <Setter Property="Background" Value="LightCyan"/>
-                                        <Setter Property="BorderThickness" Value="0" />
-                                        <Setter Property="HorizontalAlignment" Value="Left" />
-                                        <Style.Triggers>
-                                            <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Background" Value="LightCyan"/>
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Button.Style>
-                            </Button>
-                        </Grid>
-                    </Grid>
-
-                    <!--Checkbox row-->
-                    <Grid
-                    Grid.Row="1"
-                    Height="20"
-                    Margin="0,60,0,0">
-                        <CheckBox
-                        Margin="180,0,0,0" Name="cbAllFeatures" Click="cbAllFeatures_CheckedChanged">
-                            <TextBlock>
-				        <Run Foreground="White" FontWeight="Bold">Select All</Run>
-                            </TextBlock>
-                        </CheckBox>
-                    </Grid>
-
-                    <!--Preview Window-->
-                    <Grid Grid.Row="2" 
-                          Grid.Column="0"
-                          Margin="0,20">
-                        <ScrollViewer
-                            Margin="180,0,0,0"
-                            VerticalScrollBarVisibility="Visible"
-                            HorizontalScrollBarVisibility="Auto"
-                            ScrollViewer.CanContentScroll="True" PreviewMouseWheel="MouseWheelScroll">
-                            <Grid
-                    Grid.Row="2"
-                    Grid.Column="1">
-                                <ListBox
-                                x:Name="lbFiles"
-                                SelectionMode="Multiple"
-                                Height="{Binding ActualWidth, ElementName=PreviewTextBox}"
-                                BorderThickness="1"
-                                Padding="10">
-                                    <ListBox.ItemTemplate>
-                                        <DataTemplate>
-                                            <CheckBox Content="{Binding .}" Tag="{Binding CoasterId}" IsChecked="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}}, 
-                                                        Path=IsSelected}" Click="cbFeature_CheckedChanged"/>
-                                        </DataTemplate>
-                                    </ListBox.ItemTemplate>
-                                </ListBox>
-                            </Grid>
-                        </ScrollViewer>
-                    </Grid>
-
-
-
-                    <!--Right side buttons-->
-                    <Grid Grid.Column="1"
-                          Grid.Row="0">
-                        <Button Name="xButton" 
-		                        Background="Transparent"
-		                        Margin="0,15,15,0"
-		                        HorizontalAlignment="Right"
-                                VerticalAlignment="Top"
-		                        Grid.Column="2"
-		                        Click="xButtonClick"
-                                Width="30"
-                                Height="30">
-                            <Image Source="img/x-icon.png"></Image>
-                            <Button.Style>
-                                <Style TargetType="Button">
-                                    <Setter Property="Background" Value="Transparent"/>
-                                    <Style.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="Transparent"/>
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Style>
-                            <Button.Template>
-                                <ControlTemplate TargetType="Button">
-                                    <Border Width="25" Height="25"
-					Background="{TemplateBinding Background}">
-                                        <ContentPresenter VerticalAlignment="Bottom"
-								  HorizontalAlignment="Right"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Button.Template>
-                        </Button>
-                    </Grid>
-
-                    <Grid Grid.Row="2"
-                          Grid.Column="1">
-
                         <Grid.RowDefinitions>
-                            <RowDefinition/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
 
+                        <!--Open file row-->
 
-                        <Grid Grid.Row="2">
+
+
+
+                        <!--Preview Window-->
+
+
+
+
+                        <!--Right side buttons-->
+
+
+                        <Grid Grid.Row="2"
+                          Grid.Column="1">
+
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
 
-                            <Button Grid.Row="0"
+
+                            <Grid Grid.Row="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <Button Grid.Row="0"
                                     Height="50"
                                     Margin="5"
                                     Click="ButtonClicked">
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Height="15"
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Height="15"
                                            Margin="10,0,10,0"
                                            Text="Molk"
                                            FontWeight="Bold">
-                                    </TextBlock>
-                                    <Image Source="img/Zip.Icon.png"></Image>
-                                </StackPanel>
-                                <Button.Style>
-                                    <Style TargetType="Button">
-                                        <Setter Property="Background" Value="LightBlue"/>
-                                        <Setter Property="BorderThickness" Value="0"/>
-                                        <Style.Triggers>
-                                            <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Background" Value="LightSteelBlue"/>
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Button.Style>
-                                <Button.Template>
-                                    <ControlTemplate TargetType="Button">
-                                        <Border Width="150" 
+                                        </TextBlock>
+                                        <Image Source="img/Zip.Icon.png"></Image>
+                                    </StackPanel>
+                                    <Button.Style>
+                                        <Style TargetType="Button">
+                                            <Setter Property="Background" Value="LightBlue"/>
+                                            <Setter Property="BorderThickness" Value="0"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="LightSteelBlue"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border Width="150" 
                                             Height="50" 
                                         CornerRadius="12"
                                         Background="{TemplateBinding Background}">
-                                            <ContentPresenter VerticalAlignment="Center"
+                                                <ContentPresenter VerticalAlignment="Center"
                                                 HorizontalAlignment="Center"/>
-                                        </Border>
-                                    </ControlTemplate>
-                                </Button.Template>
-                            </Button>
-                            <Button Grid.Row="1"
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                                <Button Grid.Row="1"
                                     Height="50"
                                     Margin="5,0,0,0"
                                     Click="UnzipClick">
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Height="15"
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Height="15"
                                            Margin="3,0,10,0"
                                            Text="UnMolk"
                                            FontWeight="Bold">
-                                    </TextBlock>
-                                    <Image Source="img/UnZip.Icon.png"
+                                        </TextBlock>
+                                        <Image Source="img/UnZip.Icon.png"
                                        Margin="-5,0,0,0"></Image>
-                                </StackPanel>
-                                <Button.Style>
-                                    <Style TargetType="Button">
-                                        <Setter Property="Background" Value="LightBlue"/>
-                                        <Setter Property="BorderThickness" Value="0"/>
-                                        <Style.Triggers>
-                                            <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Background" Value="LightSteelBlue"/>
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Button.Style>
-                                <Button.Template>
-                                    <ControlTemplate TargetType="Button">
-                                        <Border Width="150" Height="50" 
+                                    </StackPanel>
+                                    <Button.Style>
+                                        <Style TargetType="Button">
+                                            <Setter Property="Background" Value="LightBlue"/>
+                                            <Setter Property="BorderThickness" Value="0"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="LightSteelBlue"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border Width="150" Height="50" 
                                                 CornerRadius="12"
                                                 Background="{TemplateBinding Background}">
-                                            <ContentPresenter VerticalAlignment="Center"
+                                                <ContentPresenter VerticalAlignment="Center"
                                                   HorizontalAlignment="Center"/>
-                                        </Border>
-                                    </ControlTemplate>
-                                </Button.Template>
-                            </Button>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                            </Grid>
                         </Grid>
                     </Grid>
+
                 </Grid>
+                <!--<Button Content="Delete" HorizontalAlignment="Left" Margin="119,372,0,0" VerticalAlignment="Top" Click="Delete_Button"/>-->
 
             </Grid>
-            <!--<Button Content="Delete" HorizontalAlignment="Left" Margin="119,372,0,0" VerticalAlignment="Top" Click="Delete_Button"/>-->
-
         </Grid>
-    </Border>
+
+    </Grid>
 </Page>
