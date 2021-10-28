@@ -387,9 +387,6 @@
                             </Grid>
                         </ScrollViewer>
                     </Grid>
-
-
-
                     <!--Right side buttons-->
                     <Grid Grid.Column="1"
                           Grid.Row="0">
