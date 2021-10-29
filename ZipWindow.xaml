@@ -69,7 +69,7 @@
                             <TextBox
                                 FontSize="20"
                                 VerticalAlignment="Top" Margin="2,40,2,0"
-                                Text="NewMap"
+                                Text="NewFolder"
                                 Name="newZipFolderName"
                                 Width="460px"
                                 HorizontalAlignment="Left"

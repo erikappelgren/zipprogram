@@ -60,17 +60,6 @@ namespace zipprogram
         //select the files to be zipped
         private void btnOpenFile_Click(object sender, RoutedEventArgs e)
         {
-            //var dialog = new Ookii.Dialogs.Wpf.VistaFolderBrowserDialog();
-            //if (dialog.ShowDialog().GetValueOrDefault())
-            //{
-            //    string[] fileArray = Directory.GetFiles(dialog.SelectedPath);
-            //    foreach (string s in fileArray)
-            //    {
-            //        lbFiles.Items.Add(System.IO.Path.GetFullPath(s));
-            //        FilePath.Text = dialog.SelectedPath;
-            //    }
-            //}
-
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Multiselect = true;
             openFileDialog.Filter = "All files (*.*)|*.*";
@@ -179,7 +168,7 @@ namespace zipprogram
                         lbFiles.Items.Remove(items[i]);
                     }
                 }
-                else {}
+                else { }
             }
             else
             {
@@ -203,11 +192,6 @@ namespace zipprogram
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-
-}
         private void btnOpenFolder_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new Ookii.Dialogs.Wpf.VistaFolderBrowserDialog();
